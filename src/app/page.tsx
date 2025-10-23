@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, ExternalLink, FileText, Rocket, Cpu, Sparkles, ArrowRightCircle, GraduationCap, BookOpen, PenTool, Server, Brain } from "lucide-react";
+import { Github, Linkedin, Mail, ExternalLink, FileText, Rocket, Cpu, Sparkles, ArrowRightCircle, GraduationCap, BookOpen, PenTool, Server, Brain, Award, Code2, Database, Cloud, Wrench } from "lucide-react";
 
 // ---------- DATA ----------
 const DATA = {
@@ -14,7 +14,7 @@ const DATA = {
   links: {
     github: "https://github.com/Harshabhi6129/",
     linkedin: "https://www.linkedin.com/in/harsha-abhinav/",
-    resume: "https://drive.google.com/file/d/14GU4ES4sRr4HspjUHnl2xBfZGtXolcAS/view", // replace with a real URL if you have it hosted
+    resume: "https://drive.google.com/file/d/14GU4ES4sRr4HspjUHnl2xBfZGtXolcAS/view",
     medium: "https://medium.com/@harsha6129abhi",
     research: "https://link.springer.com/chapter/10.1007/978-981-97-6318-4_28",
   },
@@ -22,7 +22,48 @@ const DATA = {
     "Java", "Spring Boot", "React.js", "Node.js", "Python", "FastAPI", "Kafka", "Redis", "PostgreSQL", "MongoDB",
     "Docker", "Kubernetes", "AWS", "CI/CD", "gRPC", "OAuth2", "RBAC", "Microservices", "LLM Apps", "HuggingFace",
   ],
+  skillCategories: [
+    {
+      category: "Programming Languages",
+      skills: ["C", "C++", "C#", "Python", "Java", "R", "Rust", "JavaScript", "Go", "PHP", "Shell Scripting"],
+    },
+    {
+      category: "Web Development",
+      skills: ["HTML", "CSS", "TypeScript", "jQuery", "Bootstrap", "React", "Node.js", "Leptos", "Django", "Flask", "WebSockets"],
+    },
+    {
+      category: "Databases",
+      skills: ["MySQL", "PostgreSQL", "Oracle", "SQL Server", "MongoDB", "Cassandra", "Redis", "DynamoDB", "Neo4j"],
+    },
+    {
+      category: "Cloud Platforms",
+      skills: ["AWS (Aurora, Redshift, EC2, S3, SQS, CloudWatch, Lambda)", "Azure (SQL DB, Data Factory, Blob Storage)"],
+    },
+    {
+      category: "Tools & DevOps",
+      skills: ["Apache Kafka", "RabbitMQ", "Linux", "Git", "Jenkins", "Docker", "Kubernetes", "Terraform", "Postman", "Jest", "Chai", "Mocha", "Prometheus", "Grafana", "WebRTC", "Maven", "Gradle", "SonarQube", "Kibana", "OpenTelemetry"],
+    },
+    {
+      category: "Core Competencies",
+      skills: ["System Design", "Microservices", "CI/CD", "Distributed Systems", "Cloud Storage", "Unit Testing", "Debugging"],
+    },
+  ],
   projects: [
+    {
+      title: "No-Code NLP Model Training Platform",
+      blurb: "Built a no-code ML/NLP trainer enabling dataset upload, task setup, guided model selection, dynamic hyperparameters, live metrics dashboards, and exportable artifacts—reducing setup time from hours to minutes.",
+      tools: ["FastAPI", "PyTorch", "HuggingFace", "React", "WebSockets"],
+    },
+    {
+      title: "Prompt Refinement & AI Chat Application",
+      blurb: "Full-stack prompt designer that converts naive input into structured prompts via option-driven forms (length, format, theme, document parsing) with MongoDB storage and real-time chat interface.",
+      tools: ["React", "Node.js", "Express", "MongoDB", "OpenAI API"],
+    },
+    {
+      title: "PINTOS Operating System Development",
+      blurb: "Enhanced Pintos (C, x86) with priority donation, MLFQ, and sync primitives; refactored 5K+ LOC, raised test coverage above 90%, and improved multithreaded throughput by 30%.",
+      tools: ["C", "x86 Assembly", "Operating Systems"],
+    },
     {
       title: "AI Prompt Refinement App",
       blurb: "Cost-efficient LLM pipeline that turns messy requests into optimized prompts; cuts tokens ~30% while improving relevance.",
@@ -42,11 +83,6 @@ const DATA = {
       tools: ["OpenAI", "ChromaDB", "Python", "Streamlit"],
       code: "https://github.com/Harshabhi6129/Persona_AI",
       demo: "https://personaai-eypmjae...streamlit.app/",
-    },
-    {
-      title: "NLP Fine-tuning Platform",
-      blurb: "Full-stack app for fine-tuning HF models with LoRA, real-time logs via WebSockets, and schema-driven hparams.",
-      tools: ["FastAPI", "React", "WebSockets", "HuggingFace"],
     },
     {
       title: "Next-Word Prediction (LSTM-GRU)",
@@ -102,6 +138,18 @@ const DATA = {
     time: "Aug 2024 – Dec 2025",
     focus: ["Distributed Systems", "Operating Systems", "AI/ML", "Software Engineering"],
   },
+  certifications: [
+    {
+      title: "AWS Certified Solutions Architect – Associate",
+      issuer: "Amazon Web Services",
+      icon: "award",
+    },
+    {
+      title: "AWS Certified Developer – Associate",
+      issuer: "Amazon Web Services",
+      icon: "award",
+    },
+  ],
 };
 
 // ---------- HELPERS ----------
@@ -166,13 +214,15 @@ export default function Portfolio() {
           <div className="hidden items-center gap-4 md:flex">
             {[
               ["About", "about"],
+              ["Skills", "skills"],
               ["Experience", "experience"],
               ["Projects", "projects"],
+              ["Certifications", "certifications"],
               ["Research", "research"],
               ["Blog", "blog"],
               ["Contact", "contact"],
             ].map(([label, id]) => (
-              <a
+              
                 key={id}
                 href={`#${id}`}
                 className="rounded-full px-3 py-1 text-sm text-white/70 transition hover:bg-white/10 hover:text-white"
@@ -212,7 +262,7 @@ export default function Portfolio() {
               magic — fast, reliable, and a little bit bold.
             </p>
             <div className="mt-6 flex flex-wrap items-center gap-3">
-              <a href={DATA.links.resume} className="group inline-flex items-center gap-2 rounded-full bg-white/90 px-4 py-2 text-sm font-semibold text-black transition hover:bg-white">
+              <a href={DATA.links.resume} target="_blank" className="group inline-flex items-center gap-2 rounded-full bg-white/90 px-4 py-2 text-sm font-semibold text-black transition hover:bg-white">
                 <FileText className="h-4 w-4" /> View Resume
               </a>
               <a href="#projects" className="group inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-2 text-sm text-white/90 backdrop-blur transition hover:bg-white/10">
@@ -256,16 +306,35 @@ export default function Portfolio() {
       <Section id="about" title="About" icon={<PenTool className="h-5 w-5" />}> 
         <GlassCard>
           <p className="text-white/80">
-            I’m a software engineer who loves turning ideas into shippable, reliable systems. From backend services and event‑driven
-            architectures to AI‑powered apps, I obsess over performance, clarity, and developer experience. When tools don’t exist,
+            I'm a software engineer who loves turning ideas into shippable, reliable systems. From backend services and event‑driven
+            architectures to AI‑powered apps, I obsess over performance, clarity, and developer experience. When tools don't exist,
             I build them. When constraints appear, I design around them. And when the release hits prod, it should just feel right.
           </p>
-          <div className="mt-6 flex flex-wrap gap-2">
-            {DATA.skills.map((s) => (
-              <Badge key={s}>{s}</Badge>
-            ))}
-          </div>
         </GlassCard>
+      </Section>
+
+      {/* SKILLS */}
+      <Section id="skills" title="Technical Skills" icon={<Code2 className="h-5 w-5" />}> 
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {DATA.skillCategories.map((cat) => (
+            <GlassCard key={cat.category}>
+              <div className="mb-4 flex items-center gap-2">
+                {cat.category.includes("Programming") && <Code2 className="h-5 w-5 text-cyan-400" />}
+                {cat.category.includes("Web") && <Cpu className="h-5 w-5 text-fuchsia-400" />}
+                {cat.category.includes("Database") && <Database className="h-5 w-5 text-emerald-400" />}
+                {cat.category.includes("Cloud") && <Cloud className="h-5 w-5 text-blue-400" />}
+                {cat.category.includes("Tools") && <Wrench className="h-5 w-5 text-amber-400" />}
+                {cat.category.includes("Competencies") && <Brain className="h-5 w-5 text-violet-400" />}
+                <h3 className="font-semibold text-white/90">{cat.category}</h3>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {cat.skills.map((skill) => (
+                  <Badge key={skill}>{skill}</Badge>
+                ))}
+              </div>
+            </GlassCard>
+          ))}
+        </div>
       </Section>
 
       {/* EXPERIENCE */}
@@ -312,9 +381,11 @@ export default function Portfolio() {
         <div className="grid gap-6 md:grid-cols-2">
           {DATA.projects.map((pr) => (
             <GlassCard key={pr.title}>
-              <div className="flex items-start justify-between gap-4">
-                <h3 className="text-xl font-semibold">{pr.title}</h3>
-                <span className="rounded-full bg-white/10 px-3 py-1 text-xs text-white/70 ring-1 ring-white/20">{pr.tools.join(" · ")}</span>
+              <h3 className="text-xl font-semibold">{pr.title}</h3>
+              <div className="mt-2 flex flex-wrap gap-2">
+                {pr.tools.map((tool) => (
+                  <Badge key={tool}>{tool}</Badge>
+                ))}
               </div>
               <p className="mt-3 text-white/80">{pr.blurb}</p>
               <div className="mt-4 flex flex-wrap gap-3">
@@ -328,6 +399,25 @@ export default function Portfolio() {
                     Live Demo <ExternalLink className="h-4 w-4" />
                   </a>
                 )}
+              </div>
+            </GlassCard>
+          ))}
+        </div>
+      </Section>
+
+      {/* CERTIFICATIONS */}
+      <Section id="certifications" title="Certifications" icon={<Award className="h-5 w-5" />}> 
+        <div className="grid gap-6 md:grid-cols-2">
+          {DATA.certifications.map((cert) => (
+            <GlassCard key={cert.title}>
+              <div className="flex items-start gap-4">
+                <div className="rounded-xl bg-amber-400/20 p-3 ring-1 ring-amber-400/30">
+                  <Award className="h-6 w-6 text-amber-400" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold">{cert.title}</h3>
+                  <p className="mt-1 text-white/70">{cert.issuer}</p>
+                </div>
               </div>
             </GlassCard>
           ))}
@@ -373,7 +463,7 @@ export default function Portfolio() {
         <GlassCard>
           <div className="grid gap-6 md:grid-cols-2">
             <div>
-              <h3 className="text-xl font-semibold">Let’s build something people love</h3>
+              <h3 className="text-xl font-semibold">Let's build something people love</h3>
               <p className="mt-2 text-white/80">
                 Open to software engineering roles, research collaborations, and tinkering on ambitious ideas. Drop a note — I reply.
               </p>
@@ -418,7 +508,7 @@ export default function Portfolio() {
       {/* EXTRA STYLES */}
       <style>{`
         /* Soft static noise overlay */
-        .noise {background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.04"/></svg>');}
+        .noise {background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="%" opacity="0.04"/></svg>');}
         .shine {background: linear-gradient(120deg, transparent, rgba(255,255,255,0.25), transparent);}
         @keyframes floaty {0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)}}
         .floaty {animation: floaty 6s ease-in-out infinite;}
