@@ -232,10 +232,10 @@ export default function Portfolio() {
             ))}
           </div>
           <div className="flex items-center gap-3">
-            <a aria-label="GitHub" href={DATA.links.github} target="_blank" className="rounded-full p-2 hover:bg-white/10">
+            <a aria-label="GitHub" href={DATA.links.github} target="_blank" rel="noopener noreferrer" className="rounded-full p-2 hover:bg-white/10">
               <Github className="h-5 w-5" />
             </a>
-            <a aria-label="LinkedIn" href={DATA.links.linkedin} target="_blank" className="rounded-full p-2 hover:bg-white/10">
+            <a aria-label="LinkedIn" href={DATA.links.linkedin} target="_blank" rel="noopener noreferrer" className="rounded-full p-2 hover:bg-white/10">
               <Linkedin className="h-5 w-5" />
             </a>
             <a aria-label="Email" href={`mailto:${DATA.email}`} className="rounded-full p-2 hover:bg-white/10">
@@ -262,7 +262,7 @@ export default function Portfolio() {
               magic — fast, reliable, and a little bit bold.
             </p>
             <div className="mt-6 flex flex-wrap items-center gap-3">
-              <a href={DATA.links.resume} target="_blank" className="group inline-flex items-center gap-2 rounded-full bg-white/90 px-4 py-2 text-sm font-semibold text-black transition hover:bg-white">
+              <a href={DATA.links.resume} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 rounded-full bg-white/90 px-4 py-2 text-sm font-semibold text-black transition hover:bg-white">
                 <FileText className="h-4 w-4" /> View Resume
               </a>
               <a href="#projects" className="group inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-2 text-sm text-white/90 backdrop-blur transition hover:bg-white/10">
@@ -390,12 +390,12 @@ export default function Portfolio() {
               <p className="mt-3 text-white/80">{pr.blurb}</p>
               <div className="mt-4 flex flex-wrap gap-3">
                 {pr.code && (
-                  <a href={pr.code} target="_blank" className="inline-flex items-center gap-2 rounded-full bg-white/90 px-3 py-1 text-sm font-medium text-black hover:bg-white">
+                  <a href={pr.code} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-white/90 px-3 py-1 text-sm font-medium text-black hover:bg-white">
                     <Github className="h-4 w-4" /> Code <ExternalLink className="h-4 w-4" />
                   </a>
                 )}
                 {pr.demo && (
-                  <a href={pr.demo} target="_blank" className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-3 py-1 text-sm text-white/90 hover:bg-white/10">
+                  <a href={pr.demo} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-3 py-1 text-sm text-white/90 hover:bg-white/10">
                     Live Demo <ExternalLink className="h-4 w-4" />
                   </a>
                 )}
@@ -432,7 +432,7 @@ export default function Portfolio() {
               <h3 className="text-xl font-semibold">IoT‑Based Estimation of Daily Evapotranspiration</h3>
               <p className="text-white/70">Performance Evaluation & Optimization for Sustainable Crop Water Management • DoSCI‑2024</p>
             </div>
-            <a href={DATA.links.research} target="_blank" className="inline-flex items-center gap-2 rounded-full bg-white/90 px-4 py-2 text-sm font-semibold text-black hover:bg-white">
+            <a href={DATA.links.research} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-white/90 px-4 py-2 text-sm font-semibold text-black hover:bg-white">
               Read Publication <ExternalLink className="h-4 w-4" />
             </a>
           </div>
@@ -451,7 +451,7 @@ export default function Portfolio() {
               <h3 className="text-xl font-semibold">Occasional notes on engineering, AI, and shipping well‑crafted software</h3>
               <p className="text-white/70">Posts are hosted on Medium.</p>
             </div>
-            <a href={DATA.links.medium} target="_blank" className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-2 text-sm text-white/90 hover:bg-white/10">
+            <a href={DATA.links.medium} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-2 text-sm text-white/90 hover:bg-white/10">
               Visit Medium <ExternalLink className="h-4 w-4" />
             </a>
           </div>
@@ -471,10 +471,10 @@ export default function Portfolio() {
                 <a href={`mailto:${DATA.email}`} className="inline-flex items-center gap-2 rounded-full bg-white/90 px-4 py-2 text-sm font-semibold text-black hover:bg-white">
                   <Mail className="h-4 w-4" /> {DATA.email}
                 </a>
-                <a href={DATA.links.linkedin} target="_blank" className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-2 text-sm text-white/90 hover:bg-white/10">
+                <a href={DATA.links.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-2 text-sm text-white/90 hover:bg-white/10">
                   <Linkedin className="h-4 w-4" /> LinkedIn
                 </a>
-                <a href={DATA.links.github} target="_blank" className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-2 text-sm text-white/90 hover:bg-white/10">
+                <a href={DATA.links.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-2 text-sm text-white/90 hover:bg-white/10">
                   <Github className="h-4 w-4" /> GitHub
                 </a>
               </div>
@@ -507,8 +507,7 @@ export default function Portfolio() {
 
       {/* EXTRA STYLES */}
       <style>{`
-        /* Soft static noise overlay */
-        .noise {background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="%" opacity="0.04"/></svg>');}
+        .noise {background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.04"/></svg>');}
         .shine {background: linear-gradient(120deg, transparent, rgba(255,255,255,0.25), transparent);}
         @keyframes floaty {0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)}}
         .floaty {animation: floaty 6s ease-in-out infinite;}
