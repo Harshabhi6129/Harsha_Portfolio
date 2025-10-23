@@ -14,7 +14,7 @@ const DATA = {
   links: {
     github: "https://github.com/Harshabhi6129/",
     linkedin: "https://www.linkedin.com/in/harsha-abhinav/",
-    resume: "https://drive.google.com/file/d/1CbGcyOzk_XV-BqmDjEhygdvIwsmasaLh/view?usp=drive_link", // replace with a real URL if you have it hosted
+    resume: "https://drive.google.com/file/d/14GU4ES4sRr4HspjUHnl2xBfZGtXolcAS/view", // replace with a real URL if you have it hosted
     medium: "https://medium.com/@harsha6129abhi",
     research: "https://link.springer.com/chapter/10.1007/978-981-97-6318-4_28",
   },
@@ -65,22 +65,34 @@ const DATA = {
   experience: [
     {
       role: "Software Engineer",
-      org: "JP Morgan Chase",
-      time: "May 2025 – Present",
+      org: "JPMorgan Chase",
+      time: "May 2025 – Sep 2025",
       points: [
-        "Built real‑time payment processing using Spring Boot, Kafka, Redis Streams; reduced settlement latency during rollout.",
-        "Containerized legacy services on Docker + Kubernetes for smoother multi-environment releases.",
-        "Implemented OAuth2 + fine‑grained RBAC; aligned with SOX/PCI DSS.",
+        "Implemented idempotency keys and transactional publish/consume in posting path; brought error rate under 0.1% with improved p95 stability.",
+        "Tuned Kafka consumer batching and backpressure after profiling, reducing p95 latency by ~18% during peak settlement windows.",
+        "Expanded structured logs and refined alert thresholds, improving incident detection and handoff times by ~25%.",
+        "Co-authored safer configuration templates and CI/CD guards, cutting release rollbacks by ~30%.",
       ],
     },
     {
-      role: "Software Engineer",
-      org: "Bajaj Finserv, India",
+      role: "Software Developer",
+      org: "Bajaj FinServ",
       time: "Aug 2022 – Jul 2024",
       points: [
-        "Credit risk evaluation engine on Spring Boot, Kafka, Redis, PostgreSQL; reduced default rates with proactive analytics.",
-        "Migrated monolith to microservices on K8s; faster feature delivery and release reliability.",
-        "Integrated KYC/AML and CI/CD with SonarQube, Trivy, ELK; improved stability and release risk.",
+        "Built Spring Boot decision service with Redis caching and parallel partner reads, improving median credit decision times by ~35%.",
+        "Designed anomaly views and event-driven webhook routing, reducing manual reviews by ~22%.",
+        "Integrated Aadhaar eKYC and PAN verification with retry logic, cutting resubmissions by ~28%.",
+        "Partnered with DBA and SRE to tune queries and add indexes, reducing database hotspot incidents from 7 to 2 per quarter.",
+      ],
+    },
+    {
+      role: "Software Developer Intern",
+      org: "Wells Fargo",
+      time: "Apr 2021 – Sep 2021",
+      points: [
+        "Built alert-preferences API with validation and PII masking, cutting median update time under 2 seconds.",
+        "Implemented scheduled recovery job for dead-letter Kafka events, improving reprocessing by 25% in staging.",
+        "Added JUnit and Testcontainers coverage with Jenkins smoke tests to improve feedback loops.",
       ],
     },
   ],
