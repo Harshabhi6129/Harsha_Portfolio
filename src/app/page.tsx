@@ -244,7 +244,6 @@ export default function Portfolio() {
           </div>
         </div>
       </nav>
-
       {/* HERO */}
       <header id="home" className="relative flex min-h-screen items-center">
         <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-10 px-6 pt-28 md:grid-cols-2">
