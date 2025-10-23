@@ -96,12 +96,12 @@ const DATA = {
       ],
     },
   ],
-  education: {
+  education: [{
     school: "University at Buffalo",
     program: "MS in Computer Science",
     time: "Aug 2024 – Dec 2025",
     focus: ["Distributed Systems", "Operating Systems", "AI/ML", "Software Engineering"],
-  },
+  }],
 };
 
 // ---------- HELPERS ----------
