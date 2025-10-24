@@ -551,15 +551,25 @@ export default function Portfolio() {
       </footer>
 
       {/* EXTRA STYLES */}
-      <style>{`
-        .noise {background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.04"/></svg>');}
-        .shine {background: linear-gradient(120deg, transparent, rgba(255,255,255,0.25), transparent);}
-        @keyframes floaty {0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)}}
-        .floaty {animation: floaty 6s ease-in-out infinite;}
+            <style>{`
+        .noise {
+          background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.04"/></svg>');
+        }
+        .shine {
+          background: linear-gradient(120deg, transparent, rgba(255,255,255,0.25), transparent);
+        }
+        @keyframes floaty {
+          0%,100% { transform: translateY(0) }
+          50% { transform: translateY(-10px) }
+        }
+        .floaty {
+          animation: floaty 6s ease-in-out infinite;
+        }
       `}</style>
     </div>
   );
 }
+
 
 // ---------- BACKGROUND FX ----------
 function BackgroundFX() {
