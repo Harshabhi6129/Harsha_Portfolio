@@ -126,7 +126,7 @@ const DATA = {
     },
   ],
   
-  education: [
+  educationList: [
   {
     program: "Master of Science in Computer Science",
     school: "University at Buffalo, The State University of New York",
@@ -368,21 +368,31 @@ export default function Portfolio() {
             </GlassCard>
           ))}
         </div>
-        <GlassCard className="mt-6">
-          <div className="flex items-center gap-3">
-            <GraduationCap className="h-5 w-5" />
-            <div>
-              <p className="font-semibold">{DATA.education.program}</p>
-              <p className="text-white/70">{DATA.education.school} • {DATA.education.time}</p>
+        {/* EDUCATION */}
+          <Section id="education" title="Education" icon={<GraduationCap className="h-5 w-5" />}>
+            <div className="grid gap-6 md:grid-cols-2">
+              {DATA.educationList.map((edu) => (
+                <GlassCard key={edu.school}>
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <h3 className="text-xl font-semibold">{edu.program}</h3>
+                      <p className="text-white/70">{edu.school}</p>
+                    </div>
+                    <span className="rounded-full bg-white/10 px-3 py-1 text-xs text-white/70 ring-1 ring-white/20">
+                      {edu.time}
+                    </span>
+                  </div>
+                  <p className="mt-3 text-white/80">{edu.details}</p>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {edu.focus.map((f) => (
+                      <Badge key={f}>{f}</Badge>
+                    ))}
+                  </div>
+                </GlassCard>
+              ))}
             </div>
-          </div>
-          <div className="mt-4 flex flex-wrap gap-2">
-            {DATA.education.focus.map((f) => (
-              <Badge key={f}>{f}</Badge>
-            ))}
-          </div>
-        </GlassCard>
-      </Section>
+          </Section>
+
 
       {/* PROJECTS */}
       <Section id="projects" title="Projects" icon={<Brain className="h-5 w-5" />}> 
