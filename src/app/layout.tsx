@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -11,11 +10,11 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+
 export const metadata = {
   title: "Harsha K — Portfolio",
   description: "Portfolio of Harsha K, Software Engineer | Building AI, Backend, and Cloud Solutions",
 };
-
 
 export default function RootLayout({
   children,
