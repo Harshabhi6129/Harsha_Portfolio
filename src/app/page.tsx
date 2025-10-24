@@ -222,7 +222,7 @@ export default function Portfolio() {
               ["Blog", "blog"],
               ["Contact", "contact"],
             ].map(([label, id]) => (
-              <a
+              
                 key={id}
                 href={`#${id}`}
                 className="rounded-full px-3 py-1 text-sm text-white/70 transition hover:bg-white/10 hover:text-white"
@@ -244,6 +244,7 @@ export default function Portfolio() {
           </div>
         </div>
       </nav>
+
       {/* HERO */}
       <header id="home" className="relative flex min-h-screen items-center">
         <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-10 px-6 pt-28 md:grid-cols-2">
@@ -305,8 +306,8 @@ export default function Portfolio() {
       <Section id="about" title="About" icon={<PenTool className="h-5 w-5" />}> 
         <GlassCard>
           <p className="text-white/80">
-            I'm a software engineer who loves turning ideas into shippable, reliable systems. From backend services and event‑driven
-            architectures to AI‑powered apps, I obsess over performance, clarity, and developer experience. When tools don't exist,
+            I&apos;m a software engineer who loves turning ideas into shippable, reliable systems. From backend services and event‑driven
+            architectures to AI‑powered apps, I obsess over performance, clarity, and developer experience. When tools don&apos;t exist,
             I build them. When constraints appear, I design around them. And when the release hits prod, it should just feel right.
           </p>
         </GlassCard>
@@ -462,7 +463,7 @@ export default function Portfolio() {
         <GlassCard>
           <div className="grid gap-6 md:grid-cols-2">
             <div>
-              <h3 className="text-xl font-semibold">Let's build something people love</h3>
+              <h3 className="text-xl font-semibold">Let&apos;s build something people love</h3>
               <p className="mt-2 text-white/80">
                 Open to software engineering roles, research collaborations, and tinkering on ambitious ideas. Drop a note — I reply.
               </p>
@@ -484,7 +485,7 @@ export default function Portfolio() {
                 <p className="text-sm text-white/70">Quick intro</p>
                 <p className="mt-2 text-white/80">
                   I care about code quality, meaningful abstractions, and shipping. My favorite pull requests are the ones that remove
-                  more code than they add.
+                  more code than theyadd.
                 </p>
                 <div className="mt-4 flex flex-wrap gap-2">
                   <Badge>Design with intent</Badge>
