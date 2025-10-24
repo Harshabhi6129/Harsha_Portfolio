@@ -125,12 +125,14 @@ const DATA = {
       ],
     },
   ],
+  
   education: {
     school: "University at Buffalo",
     program: "MS in Computer Science",
     time: "Aug 2024 – Dec 2025",
     focus: ["Distributed Systems", "Operating Systems", "AI/ML", "Software Engineering"],
   },
+  
   certifications: [
     {
       title: "AWS Certified Solutions Architect – Associate",
@@ -397,6 +399,33 @@ export default function Portfolio() {
           ))}
         </div>
       </Section>
+
+      {/* EDUCATION */}
+<Section id="education" title="Education" icon={<GraduationCap className="h-5 w-5" />}> 
+  <div className="grid gap-6 md:grid-cols-2">
+    {DATA.educationL.map((edu) => (
+      <GlassCard key={edu.school}>
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <h3 className="text-xl font-semibold">{edu.program}</h3>
+            <p className="text-white/70">{edu.school}</p>
+          </div>
+          <span className="rounded-full bg-white/10 px-3 py-1 text-xs text-white/70 ring-1 ring-white/20">
+            {edu.time}
+          </span>
+        </div>
+        <p className="mt-3 text-white/80">{edu.details}</p>
+        {edu.focus && (
+          <div className="mt-4 flex flex-wrap gap-2">
+            {edu.focus.map((f) => (
+              <Badge key={f}>{f}</Badge>
+            ))}
+          </div>
+        )}
+      </GlassCard>
+    ))}
+  </div>
+</Section>
 
       {/* CERTIFICATIONS */}
       <Section id="certifications" title="Certifications" icon={<Award className="h-5 w-5" />}> 
