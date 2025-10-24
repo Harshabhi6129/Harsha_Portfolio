@@ -126,12 +126,25 @@ const DATA = {
     },
   ],
   
-  education:[ {
-    school: "University at Buffalo",
-    program: "MS in Computer Science",
+  education: [
+  {
+    program: "Master of Science in Computer Science",
+    school: "University at Buffalo, The State University of New York",
     time: "Aug 2024 – Dec 2025",
-    focus: ["Distributed Systems", "Operating Systems", "AI/ML", "Software Engineering"],
-  }],
+    details:
+      "Coursework includes Database Management, Data Structures and Algorithms, Distributed Systems, Object-Oriented Programming, Cloud Computing, Software Development, Operating Systems, Artificial Intelligence, Machine Learning, and Deep Learning.",
+    focus: [
+      "Distributed Systems",
+      "Cloud Computing",
+      "Artificial Intelligence",
+      "Machine Learning",
+      "Deep Learning",
+      "Software Development",
+      "Database Management",
+    ],
+  },
+],
+
   
   certifications: [
     {
