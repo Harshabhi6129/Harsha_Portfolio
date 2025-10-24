@@ -222,7 +222,7 @@ export default function Portfolio() {
               ["Blog", "blog"],
               ["Contact", "contact"],
             ].map(([label, id]) => (
-              
+              <a
                 key={id}
                 href={`#${id}`}
                 className="rounded-full px-3 py-1 text-sm text-white/70 transition hover:bg-white/10 hover:text-white"
@@ -251,7 +251,7 @@ export default function Portfolio() {
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
             <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs ring-1 ring-white/20">
               <Rocket className="h-4 w-4" />
-              Building delightful, high‑impact software
+              Building delightful, high-impact software
             </div>
             <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
               {DATA.name}
@@ -265,7 +265,7 @@ export default function Portfolio() {
               <a href={DATA.links.resume} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 rounded-full bg-white/90 px-4 py-2 text-sm font-semibold text-black transition hover:bg-white">
                 <FileText className="h-4 w-4" /> View Resume
               </a>
-              <a href="#projects" className="group inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-2 text-sm text-white/90 backdrop-blur transition hover:bg-white/10">
+              <a href="#projects" className="group inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-2 text-sm text-white/90 backdrop-blur transition hover:bg-white">
                 <ArrowRightCircle className="h-4 w-4" /> Explore Projects
               </a>
             </div>
@@ -306,8 +306,8 @@ export default function Portfolio() {
       <Section id="about" title="About" icon={<PenTool className="h-5 w-5" />}> 
         <GlassCard>
           <p className="text-white/80">
-            I&apos;m a software engineer who loves turning ideas into shippable, reliable systems. From backend services and event‑driven
-            architectures to AI‑powered apps, I obsess over performance, clarity, and developer experience. When tools don&apos;t exist,
+            I&apos;m a software engineer who loves turning ideas into shippable, reliable systems. From backend services and event-driven
+            architectures to AI-powered apps, I obsess over performance, clarity, and developer experience. When tools don&apos;t exist,
             I build them. When constraints appear, I design around them. And when the release hits prod, it should just feel right.
           </p>
         </GlassCard>
@@ -429,8 +429,8 @@ export default function Portfolio() {
         <GlassCard>
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <div>
-              <h3 className="text-xl font-semibold">IoT‑Based Estimation of Daily Evapotranspiration</h3>
-              <p className="text-white/70">Performance Evaluation & Optimization for Sustainable Crop Water Management • DoSCI‑2024</p>
+              <h3 className="text-xl font-semibold">IoT-Based Estimation of Daily Evapotranspiration</h3>
+              <p className="text-white/70">Performance Evaluation & Optimization for Sustainable Crop Water Management • DoSCI-2024</p>
             </div>
             <a href={DATA.links.research} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-white/90 px-4 py-2 text-sm font-semibold text-black hover:bg-white">
               Read Publication <ExternalLink className="h-4 w-4" />
@@ -448,7 +448,7 @@ export default function Portfolio() {
         <GlassCard>
           <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
             <div>
-              <h3 className="text-xl font-semibold">Occasional notes on engineering, AI, and shipping well‑crafted software</h3>
+              <h3 className="text-xl font-semibold">Occasional notes on engineering, AI, and shipping well-crafted software</h3>
               <p className="text-white/70">Posts are hosted on Medium.</p>
             </div>
             <a href={DATA.links.medium} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-2 text-sm text-white/90 hover:bg-white/10">
