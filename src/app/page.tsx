@@ -403,7 +403,7 @@ export default function Portfolio() {
       {/* EDUCATION */}
 <Section id="education" title="Education" icon={<GraduationCap className="h-5 w-5" />}> 
   <div className="grid gap-6 md:grid-cols-2">
-    {DATA.educationL.map((edu) => (
+    {DATA.education.map((edu) => (
       <GlassCard key={edu.school}>
         <div className="flex items-start justify-between gap-4">
           <div>
