@@ -65,13 +65,6 @@ const DATA = {
       tools: ["C", "x86 Assembly", "Operating Systems"],
     },
     {
-      title: "AI Prompt Refinement App",
-      blurb: "Cost-efficient LLM pipeline that turns messy requests into optimized prompts; cuts tokens ~30% while improving relevance.",
-      tools: ["Python", "Streamlit", "OpenAI API"],
-      code: "https://github.com/Harshabhi6129/Optimized-prompt-generator",
-      demo: "https://optimized-prompt-generator-db2srwwomp3ogctwqcondz.streamlit.app/",
-    },
-    {
       title: "Real-Time AI Virtual Mouse",
       blurb: "Hands-free cursor control with CV + DL; precise gesture recognition and virtual keyboard for accessibility.",
       tools: ["Python", "OpenCV", "Deep Learning"],
