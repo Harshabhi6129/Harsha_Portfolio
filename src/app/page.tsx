@@ -227,7 +227,7 @@ export default function Portfolio() {
               ["Blog", "blog"],
               ["Contact", "contact"],
             ].map(([label, id]) => (
-              
+              <a
                 key={id}
                 href={`#${id}`}
                 className="rounded-full px-3 py-1 text-sm text-white/70 transition hover:bg-white/10 hover:text-white"
@@ -236,6 +236,7 @@ export default function Portfolio() {
               </a>
             ))}
           </div>
+
           <div className="flex items-center gap-3">
             <a aria-label="GitHub" href={DATA.links.github} target="_blank" rel="noopener noreferrer" className="rounded-full p-2 hover:bg-white/10">
               <Github className="h-5 w-5" />
