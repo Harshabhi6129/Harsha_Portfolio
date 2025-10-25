@@ -125,27 +125,23 @@ const DATA = {
       ],
     },
   ],
-  
-  educationList: [
-  {
-    program: "Master of Science in Computer Science",
-    school: "University at Buffalo, The State University of New York",
-    time: "Aug 2024 – Dec 2025",
-    details:
-      "Coursework includes Database Management, Data Structures and Algorithms, Distributed Systems, Object-Oriented Programming, Cloud Computing, Software Development, Operating Systems, Artificial Intelligence, Machine Learning, and Deep Learning.",
-    focus: [
-      "Distributed Systems",
-      "Cloud Computing",
-      "Artificial Intelligence",
-      "Machine Learning",
-      "Deep Learning",
-      "Software Development",
-      "Database Management",
-    ],
-  },
-],
-
-  
+  education: [
+    {
+      program: "Master of Science in Computer Science",
+      school: "University at Buffalo, The State University of New York",
+      time: "Aug 2024 – Dec 2025",
+      details: "Coursework includes Database Management, Data Structures and Algorithms, Distributed Systems, Object-Oriented Programming, Cloud Computing, Software Development, Operating Systems, Artificial Intelligence, Machine Learning, and Deep Learning.",
+      focus: [
+        "Distributed Systems",
+        "Cloud Computing",
+        "Artificial Intelligence",
+        "Machine Learning",
+        "Deep Learning",
+        "Software Development",
+        "Database Management",
+      ],
+    },
+  ],
   certifications: [
     {
       title: "AWS Certified Solutions Architect – Associate",
@@ -224,13 +220,14 @@ export default function Portfolio() {
               ["About", "about"],
               ["Skills", "skills"],
               ["Experience", "experience"],
+              ["Education", "education"],
               ["Projects", "projects"],
               ["Certifications", "certifications"],
               ["Research", "research"],
               ["Blog", "blog"],
               ["Contact", "contact"],
             ].map(([label, id]) => (
-              <a
+              
                 key={id}
                 href={`#${id}`}
                 className="rounded-full px-3 py-1 text-sm text-white/70 transition hover:bg-white/10 hover:text-white"
@@ -273,7 +270,7 @@ export default function Portfolio() {
               <a href={DATA.links.resume} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 rounded-full bg-white/90 px-4 py-2 text-sm font-semibold text-black transition hover:bg-white">
                 <FileText className="h-4 w-4" /> View Resume
               </a>
-              <a href="#projects" className="group inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-2 text-sm text-white/90 backdrop-blur transition hover:bg-white">
+              <a href="#projects" className="group inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-2 text-sm text-white/90 backdrop-blur transition hover:bg-white/10">
                 <ArrowRightCircle className="h-4 w-4" /> Explore Projects
               </a>
             </div>
@@ -368,31 +365,34 @@ export default function Portfolio() {
             </GlassCard>
           ))}
         </div>
-        {/* EDUCATION */}
-          <Section id="education" title="Education" icon={<GraduationCap className="h-5 w-5" />}>
-            <div className="grid gap-6 md:grid-cols-2">
-              {DATA.educationList.map((edu) => (
-                <GlassCard key={edu.school}>
-                  <div className="flex items-start justify-between gap-4">
-                    <div>
-                      <h3 className="text-xl font-semibold">{edu.program}</h3>
-                      <p className="text-white/70">{edu.school}</p>
-                    </div>
-                    <span className="rounded-full bg-white/10 px-3 py-1 text-xs text-white/70 ring-1 ring-white/20">
-                      {edu.time}
-                    </span>
-                  </div>
-                  <p className="mt-3 text-white/80">{edu.details}</p>
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {edu.focus.map((f) => (
-                      <Badge key={f}>{f}</Badge>
-                    ))}
-                  </div>
-                </GlassCard>
-              ))}
-            </div>
-          </Section>
+      </Section>
 
+      {/* EDUCATION */}
+      <Section id="education" title="Education" icon={<GraduationCap className="h-5 w-5" />}> 
+        <div className="grid gap-6">
+          {DATA.education.map((edu) => (
+            <GlassCard key={edu.school}>
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <h3 className="text-xl font-semibold">{edu.program}</h3>
+                  <p className="text-white/70">{edu.school}</p>
+                </div>
+                <span className="rounded-full bg-white/10 px-3 py-1 text-xs text-white/70 ring-1 ring-white/20">
+                  {edu.time}
+                </span>
+              </div>
+              <p className="mt-3 text-white/80">{edu.details}</p>
+              {edu.focus && (
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {edu.focus.map((f) => (
+                    <Badge key={f}>{f}</Badge>
+                  ))}
+                </div>
+              )}
+            </GlassCard>
+          ))}
+        </div>
+      </Section>
 
       {/* PROJECTS */}
       <Section id="projects" title="Projects" icon={<Brain className="h-5 w-5" />}> 
@@ -422,33 +422,6 @@ export default function Portfolio() {
           ))}
         </div>
       </Section>
-
-      {/* EDUCATION */}
-<Section id="education" title="Education" icon={<GraduationCap className="h-5 w-5" />}> 
-  <div className="grid gap-6 md:grid-cols-2">
-    {DATA.education.map((edu) => (
-      <GlassCard key={edu.school}>
-        <div className="flex items-start justify-between gap-4">
-          <div>
-            <h3 className="text-xl font-semibold">{edu.program}</h3>
-            <p className="text-white/70">{edu.school}</p>
-          </div>
-          <span className="rounded-full bg-white/10 px-3 py-1 text-xs text-white/70 ring-1 ring-white/20">
-            {edu.time}
-          </span>
-        </div>
-        <p className="mt-3 text-white/80">{edu.details}</p>
-        {edu.focus && (
-          <div className="mt-4 flex flex-wrap gap-2">
-            {edu.focus.map((f) => (
-              <Badge key={f}>{f}</Badge>
-            ))}
-          </div>
-        )}
-      </GlassCard>
-    ))}
-  </div>
-</Section>
 
       {/* CERTIFICATIONS */}
       <Section id="certifications" title="Certifications" icon={<Award className="h-5 w-5" />}> 
@@ -530,7 +503,7 @@ export default function Portfolio() {
                 <p className="text-sm text-white/70">Quick intro</p>
                 <p className="mt-2 text-white/80">
                   I care about code quality, meaningful abstractions, and shipping. My favorite pull requests are the ones that remove
-                  more code than theyadd.
+                  more code than they add.
                 </p>
                 <div className="mt-4 flex flex-wrap gap-2">
                   <Badge>Design with intent</Badge>
@@ -544,14 +517,14 @@ export default function Portfolio() {
       </Section>
 
       {/* FOOTER */}
-      <footer className="relative border-t border-white/10 py-10 text-center text-white/60">
+      <footer className="relative border-t border-white/10 py-10text-center text-white/60">
         <div className="mx-auto max-w-6xl px-6">
           <p className="text-sm">© {new Date().getFullYear()} {DATA.name}. Built with React, Tailwind & Framer Motion.</p>
         </div>
       </footer>
 
       {/* EXTRA STYLES */}
-                 <style>{`
+      <style>{`
         .noise {
           background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.04"/></svg>');
         }
@@ -569,8 +542,6 @@ export default function Portfolio() {
     </div>
   );
 }
-
-
 
 // ---------- BACKGROUND FX ----------
 function BackgroundFX() {
