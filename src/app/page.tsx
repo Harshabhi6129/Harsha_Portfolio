@@ -298,7 +298,7 @@ export default function Portfolio() {
   };
 
   return (
-    <div className="relative min-h-screen w-full overflow-x-hidden bg-[#0b0d17] text-white">
+    <div className="relative min-h-screen w-full overflow-x-hidden text-white">
       {/* Global FX */}
       <BackgroundFX />
 
