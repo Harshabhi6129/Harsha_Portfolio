@@ -76,6 +76,12 @@ const DATA = {
       tools: ["C", "x86 Assembly", "Operating Systems"],
     },
     {
+      title: "Sentiment Analysis with Tone Detection",
+      blurb: "Analyzes airline tweets with Multinomial Naïve Bayes achieving 84.6% accuracy. Classifies sentiment (Positive/Neutral/Negative), detects sarcasm, and categorizes negative feedback by reason. Features TF-IDF vectorization, SMOTE for class imbalance, and real-time prediction for customer feedback analysis.",
+      tools: ["Python", "NLP", "Machine Learning", "Jupyter", "TF-IDF"],
+      code: "https://github.com/Harshabhi6129/Sentiment-Analysis-with-Tone-Detection",
+    },
+    {
       title: "Real-Time AI Virtual Mouse",
       blurb: "Hands-free cursor control with CV + DL; precise gesture recognition and virtual keyboard for accessibility.",
       tools: ["Python", "OpenCV", "Deep Learning"],
