@@ -258,6 +258,8 @@ const Badge: React.FC<{ children: React.ReactNode }>= ({ children }) => (
 
 // ---------- MAIN COMPONENT ----------
 export default function Portfolio() {
+  const [selectedJob, setSelectedJob] = useState<typeof DATA.experience[0] | null>(null);
+
   return (
     <div className="relative min-h-screen w-full overflow-x-hidden bg-[#0b0d17] text-white">
       {/* Global FX */}
@@ -406,10 +408,52 @@ export default function Portfolio() {
       <Section id="experience" title="Experience" icon={<Server className="h-5 w-5" />}> 
         <div className="grid gap-6 md:grid-cols-2">
           {DATA.experience.map((job) => (
-            <ExperienceCard key={job.org} job={job} />
+            <ExperienceCard key={job.org} job={job} onKnowMore={() => setSelectedJob(job)} />
           ))}
         </div>
       </Section>
+
+      {/* EXPERIENCE MODAL */}
+      {selectedJob && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center px-4" onClick={() => setSelectedJob(null)}>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="absolute inset-0 bg-black/60 backdrop-blur-md"
+          />
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+            transition={{ duration: 0.3 }}
+            onClick={(e) => e.stopPropagation()}
+            className="relative z-10 max-h-[85vh] w-full max-w-3xl overflow-y-auto rounded-3xl border border-white/20 bg-[#0b0d17]/95 p-8 shadow-2xl backdrop-blur-xl"
+          >
+            <button
+              onClick={() => setSelectedJob(null)}
+              className="absolute right-4 top-4 rounded-full bg-white/10 p-2 hover:bg-white/20"
+            >
+              <span className="text-xl">×</span>
+            </button>
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <h3 className="text-2xl font-bold">{selectedJob.role}</h3>
+                <p className="text-lg text-white/70">{selectedJob.org}</p>
+              </div>
+              <span className="rounded-full bg-white/10 px-3 py-1 text-sm text-white/70 ring-1 ring-white/20">{selectedJob.time}</span>
+            </div>
+            <ul className="mt-6 space-y-3 text-white/80">
+              {selectedJob.points.map((p, i) => (
+                <li key={i} className="flex gap-3">
+                  <span className="mt-1.5 h-2 w-2 flex-none rounded-full bg-cyan-400/70 shadow-[0_0_10px_2px_#22d3ee99]" />
+                  <span>{p}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        </div>
+      )}
 
       {/* EDUCATION */}
       <Section id="education" title="Education" icon={<GraduationCap className="h-5 w-5" />}> 
@@ -607,9 +651,7 @@ export default function Portfolio() {
 }
 
 // ---------- EXPERIENCE CARD ----------
-function ExperienceCard({ job }: { job: typeof DATA.experience[0] }) {
-  const [isExpanded, setIsExpanded] = useState(false);
-
+function ExperienceCard({ job, onKnowMore }: { job: typeof DATA.experience[0]; onKnowMore: () => void }) {
   return (
     <GlassCard>
       <div className="flex items-start justify-between gap-4">
@@ -620,32 +662,12 @@ function ExperienceCard({ job }: { job: typeof DATA.experience[0] }) {
         <span className="rounded-full bg-white/10 px-3 py-1 text-xs text-white/70 ring-1 ring-white/20">{job.time}</span>
       </div>
       <button
-        onClick={() => setIsExpanded(!isExpanded)}
-        className="mt-4 flex w-full items-center justify-between rounded-lg bg-white/5 px-4 py-2 text-sm text-white/80 transition hover:bg-white/10"
+        onClick={onKnowMore}
+        className="mt-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm text-white/80 ring-1 ring-white/20 transition hover:bg-white/20"
       >
-        <span>{isExpanded ? "Hide Details" : "View Details"}</span>
-        <motion.div
-          animate={{ rotate: isExpanded ? 180 : 0 }}
-          transition={{ duration: 0.3 }}
-        >
-          <ArrowRightCircle className="h-4 w-4" style={{ transform: 'rotate(90deg)' }} />
-        </motion.div>
+        <span>Know More</span>
+        <ArrowRightCircle className="h-4 w-4" />
       </button>
-      <motion.div
-        initial={false}
-        animate={{ height: isExpanded ? "auto" : 0, opacity: isExpanded ? 1 : 0 }}
-        transition={{ duration: 0.3 }}
-        className="overflow-hidden"
-      >
-        <ul className="mt-4 space-y-2 text-white/80">
-          {job.points.map((p, i) => (
-            <li key={i} className="flex gap-2">
-              <span className="mt-1 h-2 w-2 flex-none rounded-full bg-cyan-400/70 shadow-[0_0_10px_2px_#22d3ee99]" />
-              <span>{p}</span>
-            </li>
-          ))}
-        </ul>
-      </motion.div>
     </GlassCard>
   );
 }
