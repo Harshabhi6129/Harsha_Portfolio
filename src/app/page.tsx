@@ -694,39 +694,42 @@ function BackgroundFX() {
       {/* animated gradient blobs */}
       <motion.div
         animate={{
-          x: [0, 100, 0],
-          y: [0, -50, 0],
+          x: [0, 150, -100, 0],
+          y: [0, -100, 50, 0],
+          scale: [1, 1.2, 0.8, 1],
         }}
         transition={{
           duration: 20,
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute -left-24 top-[-10%] h-[40rem] w-[40rem] rounded-full bg-cyan-500/20 blur-[120px]"
+        className="absolute -left-24 top-[-10%] h-[50rem] w-[50rem] rounded-full bg-cyan-500/30 blur-[120px]"
       />
       <motion.div
         animate={{
-          x: [0, -100, 0],
-          y: [0, 50, 0],
+          x: [0, -150, 100, 0],
+          y: [0, 100, -50, 0],
+          scale: [1, 0.8, 1.2, 1],
         }}
         transition={{
           duration: 25,
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute -right-24 bottom-[-10%] h-[40rem] w-[40rem] rounded-full bg-fuchsia-500/20 blur-[120px]"
+        className="absolute -right-24 bottom-[-10%] h-[50rem] w-[50rem] rounded-full bg-fuchsia-500/30 blur-[120px]"
       />
       <motion.div
         animate={{
-          x: [0, -80, 0],
-          y: [0, 80, 0],
+          x: [0, -120, 120, 0],
+          y: [0, 120, -120, 0],
+          scale: [1, 1.1, 0.9, 1],
         }}
         transition={{
           duration: 30,
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute left-1/2 top-1/2 h-[35rem] w-[35rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald-500/15 blur-[120px]"
+        className="absolute left-1/2 top-1/2 h-[45rem] w-[45rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald-500/25 blur-[120px]"
       />
       {/* angled grid */}
       <div className="absolute inset-0 opacity-[0.08] [mask-image:radial-gradient(closest-side,black,transparent)]">
