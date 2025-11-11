@@ -1,6 +1,6 @@
 'use client';
 
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, ExternalLink, FileText, Rocket, Cpu, Sparkles, ArrowRightCircle, GraduationCap, BookOpen, PenTool, Server, Brain, Award, Code2, Database, Cloud, Wrench } from "lucide-react";
 
@@ -406,23 +406,7 @@ export default function Portfolio() {
       <Section id="experience" title="Experience" icon={<Server className="h-5 w-5" />}> 
         <div className="grid gap-6 md:grid-cols-2">
           {DATA.experience.map((job) => (
-            <GlassCard key={job.org}>
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <h3 className="text-xl font-semibold">{job.role}</h3>
-                  <p className="text-white/70">{job.org}</p>
-                </div>
-                <span className="rounded-full bg-white/10 px-3 py-1 text-xs text-white/70 ring-1 ring-white/20">{job.time}</span>
-              </div>
-              <ul className="mt-4 space-y-2 text-white/80">
-                {job.points.map((p, i) => (
-                  <li key={i} className="flex gap-2">
-                    <span className="mt-1 h-2 w-2 flex-none rounded-full bg-cyan-400/70 shadow-[0_0_10px_2px_#22d3ee99]" />
-                    <span>{p}</span>
-                  </li>
-                ))}
-              </ul>
-            </GlassCard>
+            <ExperienceCard key={job.org} job={job} />
           ))}
         </div>
       </Section>
@@ -619,6 +603,50 @@ export default function Portfolio() {
         }
       `}</style>
     </div>
+  );
+}
+
+// ---------- EXPERIENCE CARD ----------
+function ExperienceCard({ job }: { job: typeof DATA.experience[0] }) {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  return (
+    <GlassCard>
+      <div className="flex items-start justify-between gap-4">
+        <div>
+          <h3 className="text-xl font-semibold">{job.role}</h3>
+          <p className="text-white/70">{job.org}</p>
+        </div>
+        <span className="rounded-full bg-white/10 px-3 py-1 text-xs text-white/70 ring-1 ring-white/20">{job.time}</span>
+      </div>
+      <button
+        onClick={() => setIsExpanded(!isExpanded)}
+        className="mt-4 flex w-full items-center justify-between rounded-lg bg-white/5 px-4 py-2 text-sm text-white/80 transition hover:bg-white/10"
+      >
+        <span>{isExpanded ? "Hide Details" : "View Details"}</span>
+        <motion.div
+          animate={{ rotate: isExpanded ? 180 : 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          <ArrowRightCircle className="h-4 w-4" style={{ transform: 'rotate(90deg)' }} />
+        </motion.div>
+      </button>
+      <motion.div
+        initial={false}
+        animate={{ height: isExpanded ? "auto" : 0, opacity: isExpanded ? 1 : 0 }}
+        transition={{ duration: 0.3 }}
+        className="overflow-hidden"
+      >
+        <ul className="mt-4 space-y-2 text-white/80">
+          {job.points.map((p, i) => (
+            <li key={i} className="flex gap-2">
+              <span className="mt-1 h-2 w-2 flex-none rounded-full bg-cyan-400/70 shadow-[0_0_10px_2px_#22d3ee99]" />
+              <span>{p}</span>
+            </li>
+          ))}
+        </ul>
+      </motion.div>
+    </GlassCard>
   );
 }
 
