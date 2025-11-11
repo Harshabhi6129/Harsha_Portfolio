@@ -4,6 +4,17 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, ExternalLink, FileText, Rocket, Cpu, Sparkles, ArrowRightCircle, GraduationCap, BookOpen, PenTool, Server, Brain, Award, Code2, Database, Cloud, Wrench } from "lucide-react";
 
+// ---------- TYPES ----------
+interface Certification {
+  title: string;
+  issuer: string;
+  icon: string;
+  issued?: string;
+  expires?: string;
+  credentialId?: string;
+  link?: string;
+}
+
 // ---------- DATA ----------
 const DATA = {
   name: "Harsha K",
@@ -467,18 +478,18 @@ export default function Portfolio() {
                 <div className="flex-1">
                   <h3 className="text-lg font-semibold">{cert.title}</h3>
                   <p className="mt-1 text-white/70">{cert.issuer}</p>
-                  {(cert as any).issued && (
+                  {cert.issued && (
                     <p className="mt-1 text-sm text-white/60">
-                      Issued {(cert as any).issued}
-                      {(cert as any).expires && ` · Expires ${(cert as any).expires}`}
+                      Issued {cert.issued}
+                      {cert.expires && ` · Expires ${cert.expires}`}
                     </p>
                   )}
-                  {(cert as any).credentialId && (
-                    <p className="mt-1 text-xs text-white/50">Credential ID: {(cert as any).credentialId}</p>
+                  {cert.credentialId && (
+                    <p className="mt-1 text-xs text-white/50">Credential ID: {cert.credentialId}</p>
                   )}
-                  {(cert as any).link && (
+                  {cert.link && (
                     <a
-                      href={(cert as any).link}
+                      href={cert.link}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="mt-2 inline-flex items-center gap-1 text-sm text-cyan-400 hover:text-cyan-300"
