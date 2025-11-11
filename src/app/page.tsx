@@ -153,6 +153,37 @@ const DATA = {
       issuer: "Amazon Web Services",
       icon: "award",
     },
+    {
+      title: "AWS Certified Machine Learning Engineer – Associate",
+      issuer: "Amazon Web Services",
+      issued: "May 2025",
+      expires: "May 2028",
+      link: "https://www.credly.com/badges/481a3796-1871-4387-8933-3351381f80af/linked_in_profile",
+      icon: "award",
+    },
+    {
+      title: "BCG - GenAI",
+      issuer: "BCG X",
+      issued: "Jan 2025",
+      credentialId: "9ZHCkLQTWjyz2sh3J",
+      link: "https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/SKZxezskWgmFjRvj9/gabev3vXhuACr48eb_SKZxezskWgmFjRvj9_o9Qv8ETNTrDdS37xy_1736139681637_completion_certificate.pdf",
+      icon: "award",
+    },
+    {
+      title: "Tata Group - Data Visualisation: Empowering Business with Effective Insights",
+      issuer: "Tata Group",
+      issued: "Jan 2025",
+      credentialId: "oj5SXty9NLDWfCPqk",
+      link: "https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/ifobHAoMjQs9s6bKS/MyXvBcppsW2FkNYCX_ifobHAoMjQs9s6bKS_o9Qv8ETNTrDdS37xy_1737607135331_completion_certificate.pdf",
+      icon: "award",
+    },
+    {
+      title: "Career Essentials in Generative AI by Microsoft and LinkedIn",
+      issuer: "Microsoft",
+      issued: "Sep 2024",
+      link: "https://www.linkedin.com/learning/certificates/868ae44056adbc0bf99c92c394ec3d1187d484883cc00c6758d689658bbf46d7",
+      icon: "award",
+    },
   ],
 };
 
@@ -433,9 +464,28 @@ export default function Portfolio() {
                 <div className="rounded-xl bg-amber-400/20 p-3 ring-1 ring-amber-400/30">
                   <Award className="h-6 w-6 text-amber-400" />
                 </div>
-                <div>
+                <div className="flex-1">
                   <h3 className="text-lg font-semibold">{cert.title}</h3>
                   <p className="mt-1 text-white/70">{cert.issuer}</p>
+                  {(cert as any).issued && (
+                    <p className="mt-1 text-sm text-white/60">
+                      Issued {(cert as any).issued}
+                      {(cert as any).expires && ` · Expires ${(cert as any).expires}`}
+                    </p>
+                  )}
+                  {(cert as any).credentialId && (
+                    <p className="mt-1 text-xs text-white/50">Credential ID: {(cert as any).credentialId}</p>
+                  )}
+                  {(cert as any).link && (
+                    <a
+                      href={(cert as any).link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-2 inline-flex items-center gap-1 text-sm text-cyan-400 hover:text-cyan-300"
+                    >
+                      View Credential <ExternalLink className="h-3 w-3" />
+                    </a>
+                  )}
                 </div>
               </div>
             </GlassCard>
