@@ -691,9 +691,43 @@ function ExperienceCard({ job, onKnowMore }: { job: typeof DATA.experience[0]; o
 function BackgroundFX() {
   return (
     <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-      {/* gradient glow blobs */}
-      <div className="absolute -left-24 top-[-10%] h-[40rem] w-[40rem] rounded-full bg-cyan-500/20 blur-[120px]" />
-      <div className="absolute -right-24 bottom-[-10%] h-[40rem] w-[40rem] rounded-full bg-fuchsia-500/20 blur-[120px]" />
+      {/* animated gradient blobs */}
+      <motion.div
+        animate={{
+          x: [0, 100, 0],
+          y: [0, -50, 0],
+        }}
+        transition={{
+          duration: 20,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="absolute -left-24 top-[-10%] h-[40rem] w-[40rem] rounded-full bg-cyan-500/20 blur-[120px]"
+      />
+      <motion.div
+        animate={{
+          x: [0, -100, 0],
+          y: [0, 50, 0],
+        }}
+        transition={{
+          duration: 25,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="absolute -right-24 bottom-[-10%] h-[40rem] w-[40rem] rounded-full bg-fuchsia-500/20 blur-[120px]"
+      />
+      <motion.div
+        animate={{
+          x: [0, -80, 0],
+          y: [0, 80, 0],
+        }}
+        transition={{
+          duration: 30,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="absolute left-1/2 top-1/2 h-[35rem] w-[35rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald-500/15 blur-[120px]"
+      />
       {/* angled grid */}
       <div className="absolute inset-0 opacity-[0.08] [mask-image:radial-gradient(closest-side,black,transparent)]">
         <div className="absolute -left-40 -top-40 h-[200%] w-[200%] rotate-[18deg] bg-[linear-gradient(to_right,transparent_49%,rgba(255,255,255,0.35)_50%,transparent_51%)] bg-[length:24px_24px]" />
