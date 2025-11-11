@@ -157,11 +157,17 @@ const DATA = {
     {
       title: "AWS Certified Solutions Architect – Associate",
       issuer: "Amazon Web Services",
+      issued: "Mar 2024",
+      expires: "Mar 2027",
+      link: "#",
       icon: "award",
     },
     {
       title: "AWS Certified Developer – Associate",
       issuer: "Amazon Web Services",
+      issued: "Feb 2024",
+      expires: "Feb 2027",
+      link: "#",
       icon: "award",
     },
     {
