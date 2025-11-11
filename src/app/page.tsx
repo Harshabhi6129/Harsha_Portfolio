@@ -652,22 +652,37 @@ export default function Portfolio() {
 
 // ---------- EXPERIENCE CARD ----------
 function ExperienceCard({ job, onKnowMore }: { job: typeof DATA.experience[0]; onKnowMore: () => void }) {
+  const getCompanyIcon = (org: string) => {
+    if (org.includes('JPMorgan')) return <Server className="h-6 w-6 text-blue-400" />;
+    if (org.includes('Buffalo')) return <GraduationCap className="h-6 w-6 text-purple-400" />;
+    if (org.includes('Bajaj')) return <Cpu className="h-6 w-6 text-emerald-400" />;
+    if (org.includes('Wells Fargo')) return <Code2 className="h-6 w-6 text-amber-400" />;
+    return <Server className="h-6 w-6 text-cyan-400" />;
+  };
+
   return (
     <GlassCard>
-      <div className="flex items-start justify-between gap-4">
-        <div>
-          <h3 className="text-xl font-semibold">{job.role}</h3>
-          <p className="text-white/70">{job.org}</p>
+      <div className="flex items-start gap-4">
+        <div className="rounded-xl bg-white/10 p-3 ring-1 ring-white/20">
+          {getCompanyIcon(job.org)}
         </div>
-        <span className="rounded-full bg-white/10 px-3 py-1 text-xs text-white/70 ring-1 ring-white/20">{job.time}</span>
+        <div className="flex-1">
+          <div className="flex items-start justify-between gap-4">
+            <div>
+              <h3 className="text-xl font-semibold">{job.role}</h3>
+              <p className="text-white/70">{job.org}</p>
+            </div>
+            <span className="rounded-full bg-white/10 px-3 py-1 text-xs text-white/70 ring-1 ring-white/20">{job.time}</span>
+          </div>
+          <button
+            onClick={onKnowMore}
+            className="mt-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm text-white/80 ring-1 ring-white/20 transition hover:bg-white/20"
+          >
+            <span>Know More</span>
+            <ArrowRightCircle className="h-4 w-4" />
+          </button>
+        </div>
       </div>
-      <button
-        onClick={onKnowMore}
-        className="mt-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm text-white/80 ring-1 ring-white/20 transition hover:bg-white/20"
-      >
-        <span>Know More</span>
-        <ArrowRightCircle className="h-4 w-4" />
-      </button>
     </GlassCard>
   );
 }
