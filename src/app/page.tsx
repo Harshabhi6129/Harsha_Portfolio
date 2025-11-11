@@ -373,11 +373,19 @@ export default function Portfolio() {
                 <ArrowRightCircle className="h-4 w-4" /> Explore Projects
               </a>
             </div>
-            <div className="mt-8 flex flex-wrap gap-2">
-              {DATA.skills.slice(0, 10).map((s) => (
-                <Badge key={s}>{s}</Badge>
-              ))}
-              {DATA.skills.length > 10 && <Badge>+ more</Badge>}
+            <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
+              <div className="rounded-xl border border-white/10 bg-white/5 p-3 backdrop-blur">
+                <p className="text-2xl font-bold text-cyan-400">4+</p>
+                <p className="text-xs text-white/60">Years Experience</p>
+              </div>
+              <div className="rounded-xl border border-white/10 bg-white/5 p-3 backdrop-blur">
+                <p className="text-2xl font-bold text-fuchsia-400">7+</p>
+                <p className="text-xs text-white/60">Projects Built</p>
+              </div>
+              <div className="rounded-xl border border-white/10 bg-white/5 p-3 backdrop-blur">
+                <p className="text-2xl font-bold text-emerald-400">6</p>
+                <p className="text-xs text-white/60">Certifications</p>
+              </div>
             </div>
           </motion.div>
 
