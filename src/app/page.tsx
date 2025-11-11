@@ -259,6 +259,43 @@ const Badge: React.FC<{ children: React.ReactNode }>= ({ children }) => (
 // ---------- MAIN COMPONENT ----------
 export default function Portfolio() {
   const [selectedJob, setSelectedJob] = useState<typeof DATA.experience[0] | null>(null);
+  const [showChat, setShowChat] = useState(false);
+  const [chatInput, setChatInput] = useState("");
+  const [chatResponse, setChatResponse] = useState<{ question: string; answer: string } | null>(null);
+
+  const handleChatSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!chatInput.trim()) return;
+
+    const query = chatInput.toLowerCase();
+    let answer = "";
+
+    if (query.includes("experience") || query.includes("work")) {
+      answer = `${DATA.name} has ${DATA.experience.length} professional experiences including Software Engineer at JPMorgan Chase, Research Assistant at University at Buffalo, Software Developer at Bajaj FinServ, and intern at Wells Fargo. He specializes in backend systems, microservices, and AI integration with proven track record of improving performance and reliability.`;
+    } else if (query.includes("skill") || query.includes("tech")) {
+      answer = `${DATA.name} is proficient in: ${DATA.skills.slice(0, 15).join(', ')}, and more. He has expertise across ${DATA.skillCategories.length} major categories including programming languages, web development, databases, cloud platforms, and DevOps tools.`;
+    } else if (query.includes("project")) {
+      answer = `${DATA.name} has built ${DATA.projects.length} notable projects including: No-Code NLP Model Training Platform, Prompt Refinement & AI Chat Application, PINTOS Operating System Development, Real-Time AI Virtual Mouse, and several ML/AI applications. His projects span from system-level programming to cutting-edge AI applications.`;
+    } else if (query.includes("education") || query.includes("study") || query.includes("degree")) {
+      answer = `${DATA.name} is pursuing a Master of Science in Computer Science at University at Buffalo (Aug 2024 – Dec 2025). His coursework includes Distributed Systems, Cloud Computing, AI, Machine Learning, Deep Learning, and Database Management.`;
+    } else if (query.includes("aws") || query.includes("cloud") || query.includes("certification")) {
+      answer = `${DATA.name} holds ${DATA.certifications.length} certifications including AWS Certified Solutions Architect, AWS Certified Developer, AWS Certified Machine Learning Engineer, BCG GenAI, and more. He has extensive experience with AWS services like Aurora, Redshift, EC2, S3, Lambda, and CloudWatch.`;
+    } else if (query.includes("ai") || query.includes("ml") || query.includes("machine learning")) {
+      answer = `${DATA.name} has strong AI/ML expertise demonstrated through projects like No-Code NLP Model Training Platform, Persona AI chatbot, Next-Word Prediction using LSTM-GRU, and Time-Series Forecasting. He's also a Research Assistant working on the GreenLLM project analyzing energy efficiency of LLM-generated code.`;
+    } else if (query.includes("research") || query.includes("publication")) {
+      answer = `${DATA.name} has published research on "IoT-Based Estimation of Daily Evapotranspiration" at DoSCI-2024 international symposium. Currently working as Research Assistant on the GreenLLM project at University at Buffalo, focusing on energy-efficient AI and LLM optimization.`;
+    } else if (query.includes("contact") || query.includes("email") || query.includes("reach")) {
+      answer = `You can reach ${DATA.name} at ${DATA.email}. He's also available on LinkedIn and GitHub. He's open to software engineering roles, research collaborations, and ambitious projects!`;
+    } else if (query.includes("who") || query.includes("about")) {
+      answer = `${DATA.name} is a software engineer who loves turning ideas into shippable, reliable systems. From backend services and event-driven architectures to AI-powered apps, he obsesses over performance, clarity, and developer experience. His motto: "${DATA.motto}"`;
+    } else {
+      answer = `I can help you learn about ${DATA.name}'s experience, skills, projects, education, certifications, AI/ML work, research, or how to contact him. What would you like to know?`;
+    }
+
+    setChatResponse({ question: chatInput, answer });
+    setChatInput("");
+    setShowChat(false);
+  };
 
   return (
     <div className="relative min-h-screen w-full overflow-x-hidden bg-[#0b0d17] text-white">
@@ -364,6 +401,45 @@ export default function Portfolio() {
                   </div>
                 </div>
               </div>
+
+              {/* Virtual Assistant */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1, duration: 0.6 }}
+                className="absolute -bottom-6 -right-6 cursor-pointer"
+                onClick={() => setShowChat(true)}
+              >
+                <div className="relative">
+                  {/* Character */}
+                  <motion.div
+                    animate={{ y: [0, -10, 0] }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                    className="relative h-24 w-24 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 p-1 shadow-[0_0_30px_rgba(34,211,238,0.5)] ring-2 ring-white/20"
+                  >
+                    <div className="flex h-full w-full items-center justify-center rounded-full bg-[#0b0d17]">
+                      <motion.span
+                        animate={{ rotate: [0, 10, -10, 0] }}
+                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                        className="text-4xl"
+                      >
+                        🤖
+                      </motion.span>
+                    </div>
+                  </motion.div>
+
+                  {/* Speech Bubble */}
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 1.5, duration: 0.4 }}
+                    className="absolute -left-48 top-0 w-44 rounded-2xl border border-cyan-400/30 bg-[#0b0d17]/95 p-3 shadow-xl backdrop-blur-xl"
+                  >
+                    <p className="text-xs text-white/90">👋 Hey! Ask me anything about Harsha!</p>
+                    <div className="absolute -right-2 top-8 h-4 w-4 rotate-45 border-b border-r border-cyan-400/30 bg-[#0b0d17]/95" />
+                  </motion.div>
+                </div>
+              </motion.div>
             </div>
           </motion.div>
         </div>
@@ -412,6 +488,109 @@ export default function Portfolio() {
           ))}
         </div>
       </Section>
+
+      {/* CHAT MODAL */}
+      {showChat && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center px-4" onClick={() => setShowChat(false)}>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="absolute inset-0 bg-black/60 backdrop-blur-md"
+          />
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+            onClick={(e) => e.stopPropagation()}
+            className="relative z-10 w-full max-w-lg rounded-3xl border border-cyan-400/30 bg-[#0b0d17]/95 p-6 shadow-2xl backdrop-blur-xl"
+          >
+            <button
+              onClick={() => setShowChat(false)}
+              className="absolute right-4 top-4 rounded-full bg-white/10 p-2 hover:bg-white/20"
+            >
+              <span className="text-xl">×</span>
+            </button>
+            <div className="mb-4 flex items-center gap-3">
+              <span className="text-3xl">🤖</span>
+              <div>
+                <h3 className="text-lg font-bold">Ask Me Anything!</h3>
+                <p className="text-sm text-white/60">I know everything about Harsha</p>
+              </div>
+            </div>
+            <form onSubmit={handleChatSubmit} className="space-y-3">
+              <input
+                type="text"
+                value={chatInput}
+                onChange={(e) => setChatInput(e.target.value)}
+                placeholder="e.g., What are his skills? Tell me about his projects..."
+                className="w-full rounded-xl border border-white/20 bg-white/5 px-4 py-3 text-white placeholder-white/40 outline-none focus:border-cyan-400/50 focus:ring-2 focus:ring-cyan-400/20"
+                autoFocus
+              />
+              <button
+                type="submit"
+                className="w-full rounded-xl bg-gradient-to-r from-cyan-500 to-blue-500 px-4 py-3 font-semibold text-white transition hover:from-cyan-400 hover:to-blue-400"
+              >
+                Ask 🚀
+              </button>
+            </form>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {["Skills", "Experience", "Projects", "AI/ML", "Contact"].map((q) => (
+                <button
+                  key={q}
+                  onClick={() => setChatInput(`Tell me about his ${q.toLowerCase()}`)}
+                  className="rounded-full bg-white/10 px-3 py-1 text-xs text-white/70 ring-1 ring-white/20 transition hover:bg-white/20"
+                >
+                  {q}
+                </button>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      )}
+
+      {/* CHAT RESPONSE MODAL */}
+      {chatResponse && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center px-4" onClick={() => setChatResponse(null)}>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="absolute inset-0 bg-black/60 backdrop-blur-md"
+          />
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+            onClick={(e) => e.stopPropagation()}
+            className="relative z-10 max-h-[85vh] w-full max-w-2xl overflow-y-auto rounded-3xl border border-cyan-400/30 bg-[#0b0d17]/95 p-8 shadow-2xl backdrop-blur-xl"
+          >
+            <button
+              onClick={() => setChatResponse(null)}
+              className="absolute right-4 top-4 rounded-full bg-white/10 p-2 hover:bg-white/20"
+            >
+              <span className="text-xl">×</span>
+            </button>
+            <div className="mb-4 flex items-start gap-3">
+              <span className="text-3xl">🤖</span>
+              <div className="flex-1">
+                <p className="text-sm text-white/60">You asked:</p>
+                <p className="mt-1 font-semibold text-cyan-400">{chatResponse.question}</p>
+              </div>
+            </div>
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
+              <p className="leading-relaxed text-white/90">{chatResponse.answer}</p>
+            </div>
+            <button
+              onClick={() => {
+                setChatResponse(null);
+                setShowChat(true);
+              }}
+              className="mt-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm text-white/80 ring-1 ring-white/20 transition hover:bg-white/20"
+            >
+              Ask Another Question
+            </button>
+          </motion.div>
+        </div>
+      )}
 
       {/* EXPERIENCE MODAL */}
       {selectedJob && (
