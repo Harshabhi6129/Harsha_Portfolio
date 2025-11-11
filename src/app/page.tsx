@@ -873,12 +873,12 @@ function BackgroundFX() {
       {/* animated gradient blobs */}
       <motion.div
         animate={{
-          x: [0, 150, -100, 0],
-          y: [0, -100, 50, 0],
-          scale: [1, 1.2, 0.8, 1],
+          x: [0, 200, -150, 0],
+          y: [0, -150, 100, 0],
+          scale: [1, 1.3, 0.7, 1],
         }}
         transition={{
-          duration: 20,
+          duration: 8,
           repeat: Infinity,
           ease: "easeInOut",
         }}
@@ -886,12 +886,12 @@ function BackgroundFX() {
       />
       <motion.div
         animate={{
-          x: [0, -150, 100, 0],
-          y: [0, 100, -50, 0],
-          scale: [1, 0.8, 1.2, 1],
+          x: [0, -200, 150, 0],
+          y: [0, 150, -100, 0],
+          scale: [1, 0.7, 1.3, 1],
         }}
         transition={{
-          duration: 25,
+          duration: 10,
           repeat: Infinity,
           ease: "easeInOut",
         }}
@@ -899,12 +899,12 @@ function BackgroundFX() {
       />
       <motion.div
         animate={{
-          x: [0, -120, 120, 0],
-          y: [0, 120, -120, 0],
-          scale: [1, 1.1, 0.9, 1],
+          x: [0, -180, 180, 0],
+          y: [0, 180, -180, 0],
+          scale: [1, 1.2, 0.8, 1],
         }}
         transition={{
-          duration: 30,
+          duration: 12,
           repeat: Infinity,
           ease: "easeInOut",
         }}
