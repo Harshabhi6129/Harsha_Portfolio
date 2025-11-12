@@ -361,7 +361,7 @@ Education:
 [END KNOWLEDGE BASE]`;
 
       const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyB_5ipovr3rV0w0xG7tZqo8Hu6_53_dQV0`,
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyB_5ipovr3rV0w0xG7tZqo8Hu6_53_dQV0`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -369,8 +369,7 @@ Education:
             contents: [
               {
                 parts: [
-                  { text: KNOWLEDGE_BASE },
-                  { text: `\n\nUser Question: ${question}\n\nAnswer:` }
+                  { text: `${KNOWLEDGE_BASE}\n\nUser Question: ${question}\n\nProvide a helpful, concise answer based on the knowledge base above.` }
                 ]
               }
             ],
@@ -383,6 +382,12 @@ Education:
       );
 
       const data = await response.json();
+      console.log('Gemini Response:', data);
+      
+      if (data.error) {
+        throw new Error(data.error.message);
+      }
+      
       const answer = data.candidates?.[0]?.content?.parts?.[0]?.text || "Sorry, I couldn't generate a response. Please try again!";
       
       setChatResponse({ question, answer });
