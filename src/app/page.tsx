@@ -582,7 +582,7 @@ Education:
                         {/* Eyes */}
                         <motion.div
                           animate={{ scaleY: [1, 0.1, 1] }}
-                          transition={{ duration: 3, repeat: Infinity, repeatDelay: 2 }}
+                          transition={{ duration: 0.2, repeat: Infinity, repeatDelay: 1.5 }}
                           className="absolute left-2 top-3 flex gap-3"
                         >
                           <div className="h-5 w-3 rounded-full bg-white shadow-[0_0_10px_rgba(255,255,255,0.8)]" />
