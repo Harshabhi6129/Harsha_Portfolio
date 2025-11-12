@@ -395,12 +395,18 @@ Education:
         throw new Error(data.error.message);
       }
       
-      const answer = data.candidates?.[0]?.content?.parts?.[0]?.text;
+      let answer = data.candidates?.[0]?.content?.parts?.[0]?.text;
       
       if (!answer) {
         console.error('No answer in response:', data);
         throw new Error('No answer generated');
       }
+      
+      // Format markdown to HTML for better readability
+      answer = answer
+        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>') // Bold
+        .replace(/\* /g, '\n• ') // Bullet points
+        .replace(/\n/g, '<br/>'); // Line breaks
       
       setChatResponse({ question, answer });
     } catch (error) {
@@ -687,7 +693,7 @@ Education:
               </div>
             </div>
             <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
-              <p className="leading-relaxed text-white/90">{chatResponse.answer}</p>
+              <div className="leading-relaxed text-white/90" dangerouslySetInnerHTML={{ __html: chatResponse.answer }} />
             </div>
             <button
               onClick={() => {
