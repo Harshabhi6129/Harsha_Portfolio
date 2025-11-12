@@ -268,6 +268,19 @@ export default function Portfolio() {
   const [showChat, setShowChat] = useState(false);
   const [chatInput, setChatInput] = useState("");
   const [chatResponse, setChatResponse] = useState<{ question: string; answer: string } | null>(null);
+  const [ripples, setRipples] = useState<{ x: number; y: number; id: number }[]>([]);
+
+  React.useEffect(() => {
+    const handleClick = (e: MouseEvent) => {
+      const newRipple = { x: e.clientX, y: e.clientY, id: Date.now() };
+      setRipples(prev => [...prev, newRipple]);
+      setTimeout(() => {
+        setRipples(prev => prev.filter(r => r.id !== newRipple.id));
+      }, 1000);
+    };
+    window.addEventListener('click', handleClick);
+    return () => window.removeEventListener('click', handleClick);
+  }, []);
 
   const handleChatSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -452,6 +465,17 @@ Education:
 
   return (
     <div className="relative min-h-screen w-full overflow-x-hidden text-white">
+      {/* Ripple Effects */}
+      {ripples.map(ripple => (
+        <motion.div
+          key={ripple.id}
+          initial={{ scale: 0, opacity: 0.6 }}
+          animate={{ scale: 3, opacity: 0 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="pointer-events-none fixed z-[9999] h-20 w-20 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-cyan-400/50"
+          style={{ left: `${ripple.x}px`, top: `${ripple.y}px` }}
+        />
+      ))}
       {/* Global FX */}
       <BackgroundFX />
 
