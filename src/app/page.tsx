@@ -269,6 +269,7 @@ export default function Portfolio() {
   const [chatInput, setChatInput] = useState("");
   const [chatResponse, setChatResponse] = useState<{ question: string; answer: string } | null>(null);
   const [ripples, setRipples] = useState<{ x: number; y: number; id: number }[]>([]);
+  const [trail, setTrail] = useState<{ x: number; y: number; id: number }[]>([]);
 
   React.useEffect(() => {
     const handleClick = (e: MouseEvent) => {
@@ -278,8 +279,18 @@ export default function Portfolio() {
         setRipples(prev => prev.filter(r => r.id !== newRipple.id));
       }, 1000);
     };
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const newTrail = { x: e.clientX, y: e.clientY, id: Date.now() };
+      setTrail(prev => [...prev.slice(-15), newTrail]);
+    };
+
     window.addEventListener('click', handleClick);
-    return () => window.removeEventListener('click', handleClick);
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => {
+      window.removeEventListener('click', handleClick);
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
   }, []);
 
   const handleChatSubmit = async (e: React.FormEvent) => {
@@ -465,6 +476,21 @@ Education:
 
   return (
     <div className="relative min-h-screen w-full overflow-x-hidden text-white">
+      {/* Cursor Trail */}
+      {trail.map((point, index) => (
+        <motion.div
+          key={point.id}
+          initial={{ scale: 1, opacity: 0.5 }}
+          animate={{ scale: 0, opacity: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="pointer-events-none fixed z-[9998] h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-400/40 blur-sm"
+          style={{ 
+            left: `${point.x}px`, 
+            top: `${point.y}px`,
+            opacity: (index / trail.length) * 0.5
+          }}
+        />
+      ))}
       {/* Ripple Effects */}
       {ripples.map(ripple => (
         <motion.div
