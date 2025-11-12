@@ -598,7 +598,6 @@ Education:
                     className="absolute -left-48 top-0 w-44 rounded-2xl border border-cyan-400/50 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 p-3 shadow-[0_0_20px_rgba(34,211,238,0.3)] backdrop-blur-xl"
                   >
                     <p className="text-xs font-medium text-white">👋 Hey! Ask me anything about Harsha!</p>
-                    <div className="absolute -right-2 top-8 h-4 w-4 rotate-45 border-b border-r border-cyan-400/50 bg-gradient-to-br from-cyan-500/20 to-blue-500/20" />
                   </motion.div>
                 </div>
               </motion.div>
