@@ -572,18 +572,10 @@ Education:
                         <motion.div
                           animate={{ scaleY: [1, 0.1, 1] }}
                           transition={{ duration: 3, repeat: Infinity, repeatDelay: 2 }}
-                          className="absolute left-3 top-4 flex gap-4"
+                          className="absolute left-2 top-3 flex gap-3"
                         >
-                          <div className="h-3 w-3 rounded-full bg-white shadow-[0_0_10px_rgba(255,255,255,0.8)]" />
-                          <div className="h-3 w-3 rounded-full bg-white shadow-[0_0_10px_rgba(255,255,255,0.8)]" />
-                        </motion.div>
-                        {/* Mouth */}
-                        <motion.div
-                          animate={{ scaleX: [1, 1.2, 1] }}
-                          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                          className="absolute bottom-3 left-1/2 h-3 w-7 -translate-x-1/2 overflow-hidden"
-                        >
-                          <div className="h-6 w-7 rounded-full border-2 border-white" />
+                          <div className="h-5 w-3 rounded-full bg-white shadow-[0_0_10px_rgba(255,255,255,0.8)]" />
+                          <div className="h-5 w-3 rounded-full bg-white shadow-[0_0_10px_rgba(255,255,255,0.8)]" />
                         </motion.div>
                       </div>
                     </div>
@@ -675,12 +667,9 @@ Education:
               <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-cyan-400 to-blue-500">
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-blue-900 to-purple-900">
                   <div className="relative h-6 w-6">
-                    <div className="absolute left-1 top-1 flex gap-2">
-                      <div className="h-1.5 w-1.5 rounded-full bg-white" />
-                      <div className="h-1.5 w-1.5 rounded-full bg-white" />
-                    </div>
-                    <div className="absolute bottom-0.5 left-1/2 h-2 w-4 -translate-x-1/2 overflow-hidden">
-                      <div className="h-4 w-4 rounded-full border border-white" />
+                    <div className="absolute left-0.5 top-1 flex gap-2">
+                      <div className="h-3 w-1.5 rounded-full bg-white" />
+                      <div className="h-3 w-1.5 rounded-full bg-white" />
                     </div>
                   </div>
                 </div>
@@ -746,12 +735,9 @@ Education:
               <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-cyan-400 to-blue-500">
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-blue-900 to-purple-900">
                   <div className="relative h-6 w-6">
-                    <div className="absolute left-1 top-1 flex gap-2">
-                      <div className="h-1.5 w-1.5 rounded-full bg-white" />
-                      <div className="h-1.5 w-1.5 rounded-full bg-white" />
-                    </div>
-                    <div className="absolute bottom-0.5 left-1/2 h-2 w-4 -translate-x-1/2 overflow-hidden">
-                      <div className="h-4 w-4 rounded-full border border-white" />
+                    <div className="absolute left-0.5 top-1 flex gap-2">
+                      <div className="h-3 w-1.5 rounded-full bg-white" />
+                      <div className="h-3 w-1.5 rounded-full bg-white" />
                     </div>
                   </div>
                 </div>
