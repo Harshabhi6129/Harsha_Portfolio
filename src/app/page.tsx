@@ -388,18 +388,25 @@ Education:
       }
 
       const data = await response.json();
-      console.log('Gemini Response:', data);
+      console.log('Full Gemini Response:', JSON.stringify(data, null, 2));
       
       if (data.error) {
         console.error('Gemini Error:', data.error);
         throw new Error(data.error.message);
       }
       
-      let answer = data.candidates?.[0]?.content?.parts?.[0]?.text;
+      // Try multiple paths to get the answer
+      let answer = data.candidates?.[0]?.content?.parts?.[0]?.text 
+                || data.candidates?.[0]?.output 
+                || data.text 
+                || data.response;
+      
+      console.log('Extracted answer:', answer);
       
       if (!answer) {
-        console.error('No answer in response:', data);
-        throw new Error('No answer generated');
+        console.error('No answer found. Full response:', data);
+        console.error('Candidates:', data.candidates);
+        throw new Error('No answer generated. Check console for details.');
       }
       
       // Format markdown to HTML for better readability
