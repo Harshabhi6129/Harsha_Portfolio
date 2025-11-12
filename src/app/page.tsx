@@ -583,13 +583,22 @@ Education:
 
                   {/* Speech Bubble */}
                   <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 1.5, duration: 0.4 }}
-                    className="absolute -left-48 top-0 w-44 rounded-2xl border border-cyan-400/30 bg-[#0b0d17]/95 p-3 shadow-xl backdrop-blur-xl"
+                    initial={{ opacity: 0, scale: 0.8, y: 10 }}
+                    animate={{ 
+                      opacity: [0.9, 1, 0.9],
+                      scale: [1, 1.05, 1],
+                      y: [0, -5, 0]
+                    }}
+                    transition={{ 
+                      delay: 1.5,
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                    className="absolute -left-48 top-0 w-44 rounded-2xl border border-cyan-400/50 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 p-3 shadow-[0_0_20px_rgba(34,211,238,0.3)] backdrop-blur-xl"
                   >
-                    <p className="text-xs text-white/90">👋 Hey! Ask me anything about Harsha!</p>
-                    <div className="absolute -right-2 top-8 h-4 w-4 rotate-45 border-b border-r border-cyan-400/30 bg-[#0b0d17]/95" />
+                    <p className="text-xs font-medium text-white">👋 Hey! Ask me anything about Harsha!</p>
+                    <div className="absolute -right-2 top-8 h-4 w-4 rotate-45 border-b border-r border-cyan-400/50 bg-gradient-to-br from-cyan-500/20 to-blue-500/20" />
                   </motion.div>
                 </div>
               </motion.div>
