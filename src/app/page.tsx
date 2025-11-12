@@ -289,7 +289,6 @@ Rules:
 - Answer ONLY from the knowledge base below
 - If asked something not in the knowledge base, politely say you can only answer about his professional background
 - Be conversational and natural
-- For contact: harshabku.work@gmail.com
 
 [KNOWLEDGE BASE]
 
@@ -297,8 +296,17 @@ Core Identity:
 - Full Name: Harsha K
 - Current: MS Computer Science at University at Buffalo (GPA 4.0, Aug 2024 – Dec 2025)
 - Seeking: Full-Time SDE roles
-- Email: harshabku.work@gmail.com
+- Location: Buffalo, New York, USA
 - Pitch: "Software engineer and AI enthusiast who builds robust backend systems, distributed services, and AI applications. Focus on performance, reliability, and scalable software."
+
+Contact & Links:
+- Email: harshabku.work@gmail.com
+- Phone: (916) 545-5339
+- LinkedIn: https://www.linkedin.com/in/harsha-abhinav/
+- GitHub: https://github.com/Harshabhi6129/
+- Medium Blog: https://medium.com/@harsha6129abhi
+- Resume: https://drive.google.com/file/d/14GU4ES4sRr4HspjUHnl2xBfZGtXolcAS/view
+- Research Paper: https://link.springer.com/chapter/10.1007/978-981-97-6318-4_28
 
 Experience:
 1. Research Assistant - University at Buffalo (Jan 2025 – Present)
@@ -336,10 +344,15 @@ Projects:
 2. Prompt Refinement AI Chat: React, Node.js, MongoDB, OpenAI - Structured prompt designer
 3. PINTOS OS Development: C, x86 - Priority donation, MLFQ, 30% throughput improvement
 4. Sentiment Analysis with Tone Detection: Python, NLP, TF-IDF - 84.6% accuracy, sarcasm detection
+   GitHub: https://github.com/Harshabhi6129/Sentiment-Analysis-with-Tone-Detection
 5. Real-Time AI Virtual Mouse: Python, OpenCV, MediaPipe - Gesture-based control
+   GitHub: https://github.com/Harshabhi6129/Real-Time-AI-Virtual-Mouse-System-Using-Deep-Learning
 6. Persona AI: OpenAI, ChromaDB, Streamlit - RAG chatbot with memory
+   GitHub: https://github.com/Harshabhi6129/Persona_AI
 7. Next-Word Prediction: LSTM-GRU, Streamlit - Sequence modeling
+   GitHub: https://github.com/Harshabhi6129/Next-Word-Prediction-using-LSTM-GRU
 8. Time-Series Forecasting: PyTorch, RNN/LSTM - Air quality prediction
+   GitHub: https://github.com/Harshabhi6129/Time-Series-Forecasting-with-RNN-LSTM-using-PyTorch
 
 Certifications:
 - AWS Certified Machine Learning Engineer (May 2025)
