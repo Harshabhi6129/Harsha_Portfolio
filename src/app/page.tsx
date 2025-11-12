@@ -381,20 +381,33 @@ Education:
         }
       );
 
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error('API Error:', errorData);
+        throw new Error(errorData.error?.message || 'API request failed');
+      }
+
       const data = await response.json();
       console.log('Gemini Response:', data);
       
       if (data.error) {
+        console.error('Gemini Error:', data.error);
         throw new Error(data.error.message);
       }
       
-      const answer = data.candidates?.[0]?.content?.parts?.[0]?.text || "Sorry, I couldn't generate a response. Please try again!";
+      const answer = data.candidates?.[0]?.content?.parts?.[0]?.text;
+      
+      if (!answer) {
+        console.error('No answer in response:', data);
+        throw new Error('No answer generated');
+      }
       
       setChatResponse({ question, answer });
     } catch (error) {
+      console.error('Chat Error:', error);
       setChatResponse({ 
         question, 
-        answer: "Oops! I'm having trouble connecting right now. Please try again in a moment!" 
+        answer: `Oops! Error: ${error instanceof Error ? error.message : 'Unknown error'}. Please try again!` 
       });
     }
   };
