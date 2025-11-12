@@ -418,9 +418,21 @@ Education:
       setChatResponse({ question, answer });
     } catch (error) {
       console.error('Chat Error:', error);
+      let errorMessage = 'Something went wrong. Please try again!';
+      
+      if (error instanceof Error) {
+        if (error.message.includes('429') || error.message.includes('quota')) {
+          errorMessage = 'Rate limit reached! Please wait a moment and try again.';
+        } else if (error.message.includes('SAFETY') || error.message.includes('blocked')) {
+          errorMessage = 'Response was blocked by safety filters. Try rephrasing your question.';
+        } else {
+          errorMessage = error.message;
+        }
+      }
+      
       setChatResponse({ 
         question, 
-        answer: `Oops! Error: ${error instanceof Error ? error.message : 'Unknown error'}. Please try again!` 
+        answer: `⚠️ ${errorMessage}` 
       });
     }
   };
