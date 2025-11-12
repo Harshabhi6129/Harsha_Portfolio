@@ -565,14 +565,25 @@ Education:
                     transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                     className="relative h-24 w-24 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 p-1 shadow-[0_0_30px_rgba(34,211,238,0.5)] ring-2 ring-white/20"
                   >
-                    <div className="flex h-full w-full items-center justify-center rounded-full bg-[#0b0d17]">
-                      <motion.span
-                        animate={{ rotate: [0, 10, -10, 0] }}
-                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                        className="text-4xl"
-                      >
-                        🤖
-                      </motion.span>
+                    <div className="flex h-full w-full items-center justify-center rounded-full bg-gradient-to-br from-blue-900 to-purple-900">
+                      {/* Animated Face */}
+                      <div className="relative h-16 w-16">
+                        {/* Eyes */}
+                        <motion.div
+                          animate={{ scaleY: [1, 0.1, 1] }}
+                          transition={{ duration: 3, repeat: Infinity, repeatDelay: 2 }}
+                          className="absolute left-3 top-4 flex gap-4"
+                        >
+                          <div className="h-3 w-3 rounded-full bg-white shadow-[0_0_10px_rgba(255,255,255,0.8)]" />
+                          <div className="h-3 w-3 rounded-full bg-white shadow-[0_0_10px_rgba(255,255,255,0.8)]" />
+                        </motion.div>
+                        {/* Mouth */}
+                        <motion.div
+                          animate={{ scaleX: [1, 1.2, 1] }}
+                          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                          className="absolute bottom-4 left-1/2 h-2 w-8 -translate-x-1/2 rounded-full border-2 border-b-white border-l-transparent border-r-transparent border-t-transparent"
+                        />
+                      </div>
                     </div>
                   </motion.div>
 
@@ -659,7 +670,17 @@ Education:
               <span className="text-xl">×</span>
             </button>
             <div className="mb-4 flex items-center gap-3">
-              <span className="text-3xl">🤖</span>
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-cyan-400 to-blue-500">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-blue-900 to-purple-900">
+                  <div className="relative h-6 w-6">
+                    <div className="absolute left-1 top-1 flex gap-2">
+                      <div className="h-1.5 w-1.5 rounded-full bg-white" />
+                      <div className="h-1.5 w-1.5 rounded-full bg-white" />
+                    </div>
+                    <div className="absolute bottom-1 left-1/2 h-1 w-4 -translate-x-1/2 rounded-full border border-b-white border-l-transparent border-r-transparent border-t-transparent" />
+                  </div>
+                </div>
+              </div>
               <div>
                 <h3 className="text-lg font-bold">Ask Me Anything!</h3>
                 <p className="text-sm text-white/60">Powered by Gemini AI • I know everything about Harsha</p>
@@ -718,7 +739,17 @@ Education:
               <span className="text-xl">×</span>
             </button>
             <div className="mb-4 flex items-start gap-3">
-              <span className="text-3xl">🤖</span>
+              <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-cyan-400 to-blue-500">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-blue-900 to-purple-900">
+                  <div className="relative h-6 w-6">
+                    <div className="absolute left-1 top-1 flex gap-2">
+                      <div className="h-1.5 w-1.5 rounded-full bg-white" />
+                      <div className="h-1.5 w-1.5 rounded-full bg-white" />
+                    </div>
+                    <div className="absolute bottom-1 left-1/2 h-1 w-4 -translate-x-1/2 rounded-full border border-b-white border-l-transparent border-r-transparent border-t-transparent" />
+                  </div>
+                </div>
+              </div>
               <div className="flex-1">
                 <p className="text-sm text-white/60">You asked:</p>
                 <p className="mt-1 font-semibold text-cyan-400">{chatResponse.question}</p>
