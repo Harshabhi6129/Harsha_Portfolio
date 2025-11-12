@@ -359,19 +359,19 @@ export default function Portfolio() {
       <header id="home" className="relative flex min-h-screen items-center">
         <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-10 px-6 pt-28 md:grid-cols-2">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs ring-1 ring-white/20">
-              <Rocket className="h-4 w-4" />
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm ring-1 ring-white/20">
+              <Rocket className="h-5 w-5" />
               Building delightful, high-impact software
             </div>
-            <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
+            <h1 className="text-5xl font-extrabold tracking-tight sm:text-6xl lg:text-7xl">
               {DATA.name}
             </h1>
-            <p className="mt-3 text-lg text-white/70">{DATA.motto}</p>
-            <p className="mt-4 max-w-xl text-white/70">
+            <p className="mt-4 text-2xl font-semibold text-white/80">{DATA.motto}</p>
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/70">
               I design robust backends, craft intuitive interfaces, and wire AI into real products. Good software should feel like
               magic — fast, reliable, and a little bit bold.
             </p>
-            <div className="mt-6 flex flex-wrap items-center gap-3">
+            <div className="mt-8 flex flex-wrap items-center gap-4">
               <a href={DATA.links.resume} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 rounded-full bg-white/90 px-4 py-2 text-sm font-semibold text-black transition hover:bg-white">
                 <FileText className="h-4 w-4" /> View Resume
               </a>
@@ -379,20 +379,7 @@ export default function Portfolio() {
                 <ArrowRightCircle className="h-4 w-4" /> Explore Projects
               </a>
             </div>
-            <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
-              <div className="rounded-xl border border-white/10 bg-white/5 p-3 backdrop-blur">
-                <p className="text-2xl font-bold text-cyan-400">4+</p>
-                <p className="text-xs text-white/60">Years Experience</p>
-              </div>
-              <div className="rounded-xl border border-white/10 bg-white/5 p-3 backdrop-blur">
-                <p className="text-2xl font-bold text-fuchsia-400">7+</p>
-                <p className="text-xs text-white/60">Projects Built</p>
-              </div>
-              <div className="rounded-xl border border-white/10 bg-white/5 p-3 backdrop-blur">
-                <p className="text-2xl font-bold text-emerald-400">6</p>
-                <p className="text-xs text-white/60">Certifications</p>
-              </div>
-            </div>
+
           </motion.div>
 
           <motion.div
