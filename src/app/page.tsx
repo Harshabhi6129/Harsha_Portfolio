@@ -552,10 +552,10 @@ Education:
 
               {/* Virtual Assistant */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 1, duration: 0.6 }}
-                className="absolute -bottom-6 -right-6 cursor-pointer"
+                className="fixed bottom-8 right-8 z-50 cursor-pointer"
                 onClick={() => setShowChat(true)}
               >
                 <div className="relative">
