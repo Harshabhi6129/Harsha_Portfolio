@@ -269,38 +269,129 @@ export default function Portfolio() {
   const [chatInput, setChatInput] = useState("");
   const [chatResponse, setChatResponse] = useState<{ question: string; answer: string } | null>(null);
 
-  const handleChatSubmit = (e: React.FormEvent) => {
+  const handleChatSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!chatInput.trim()) return;
 
-    const query = chatInput.toLowerCase();
-    let answer = "";
-
-    if (query.includes("experience") || query.includes("work")) {
-      answer = `${DATA.name} has ${DATA.experience.length} professional experiences including Software Engineer at JPMorgan Chase, Research Assistant at University at Buffalo, Software Developer at Bajaj FinServ, and intern at Wells Fargo. He specializes in backend systems, microservices, and AI integration with proven track record of improving performance and reliability.`;
-    } else if (query.includes("skill") || query.includes("tech")) {
-      answer = `${DATA.name} is proficient in: ${DATA.skills.slice(0, 15).join(', ')}, and more. He has expertise across ${DATA.skillCategories.length} major categories including programming languages, web development, databases, cloud platforms, and DevOps tools.`;
-    } else if (query.includes("project")) {
-      answer = `${DATA.name} has built ${DATA.projects.length} notable projects including: No-Code NLP Model Training Platform, Prompt Refinement & AI Chat Application, PINTOS Operating System Development, Real-Time AI Virtual Mouse, and several ML/AI applications. His projects span from system-level programming to cutting-edge AI applications.`;
-    } else if (query.includes("education") || query.includes("study") || query.includes("degree")) {
-      answer = `${DATA.name} is pursuing a Master of Science in Computer Science at University at Buffalo (Aug 2024 – Dec 2025). His coursework includes Distributed Systems, Cloud Computing, AI, Machine Learning, Deep Learning, and Database Management.`;
-    } else if (query.includes("aws") || query.includes("cloud") || query.includes("certification")) {
-      answer = `${DATA.name} holds ${DATA.certifications.length} certifications including AWS Certified Solutions Architect, AWS Certified Developer, AWS Certified Machine Learning Engineer, BCG GenAI, and more. He has extensive experience with AWS services like Aurora, Redshift, EC2, S3, Lambda, and CloudWatch.`;
-    } else if (query.includes("ai") || query.includes("ml") || query.includes("machine learning")) {
-      answer = `${DATA.name} has strong AI/ML expertise demonstrated through projects like No-Code NLP Model Training Platform, Persona AI chatbot, Next-Word Prediction using LSTM-GRU, and Time-Series Forecasting. He's also a Research Assistant working on the GreenLLM project analyzing energy efficiency of LLM-generated code.`;
-    } else if (query.includes("research") || query.includes("publication")) {
-      answer = `${DATA.name} has published research on "IoT-Based Estimation of Daily Evapotranspiration" at DoSCI-2024 international symposium. Currently working as Research Assistant on the GreenLLM project at University at Buffalo, focusing on energy-efficient AI and LLM optimization.`;
-    } else if (query.includes("contact") || query.includes("email") || query.includes("reach")) {
-      answer = `You can reach ${DATA.name} at ${DATA.email}. He's also available on LinkedIn and GitHub. He's open to software engineering roles, research collaborations, and ambitious projects!`;
-    } else if (query.includes("who") || query.includes("about")) {
-      answer = `${DATA.name} is a software engineer who loves turning ideas into shippable, reliable systems. From backend services and event-driven architectures to AI-powered apps, he obsesses over performance, clarity, and developer experience. His motto: "${DATA.motto}"`;
-    } else {
-      answer = `I can help you learn about ${DATA.name}'s experience, skills, projects, education, certifications, AI/ML work, research, or how to contact him. What would you like to know?`;
-    }
-
-    setChatResponse({ question: chatInput, answer });
+    const question = chatInput;
     setChatInput("");
     setShowChat(false);
+    setChatResponse({ question, answer: "Thinking..." });
+
+    try {
+      const KNOWLEDGE_BASE = `You are "Harsha's AI Assistant," a professional and helpful chatbot on Harsha K's portfolio.
+
+Your Goal: Answer questions about Harsha's skills, experience, and projects based ONLY on the knowledge below.
+
+Tone: Professional, helpful, concise. Keep answers under 150 words unless asked for details.
+
+Rules:
+- Answer ONLY from the knowledge base below
+- If asked something not in the knowledge base, politely say you can only answer about his professional background
+- Be conversational and natural
+- For contact: harshabku.work@gmail.com
+
+[KNOWLEDGE BASE]
+
+Core Identity:
+- Full Name: Harsha K
+- Current: MS Computer Science at University at Buffalo (GPA 4.0, Aug 2024 – Dec 2025)
+- Seeking: Full-Time SDE roles
+- Email: harshabku.work@gmail.com
+- Pitch: "Software engineer and AI enthusiast who builds robust backend systems, distributed services, and AI applications. Focus on performance, reliability, and scalable software."
+
+Experience:
+1. Research Assistant - University at Buffalo (Jan 2025 – Present)
+   - GreenLLM project: Analyzing energy efficiency of LLM-generated code (GPT-4o, Gemini, DeepSeek, Llama 3)
+   - Built automated pipelines, energy-aware prompting, profiling with perf/mprof
+   - Created generator-profiler-critic architecture for LLM self-optimization
+
+2. Software Engineer - JPMorgan Chase (May 2025 – Sep 2025)
+   - Implemented idempotency keys, reduced duplicate writes to <0.1%
+   - Tuned Kafka batching, improved p95 latency by 18%
+   - Enhanced observability (Grafana), reduced incident detection by 25%
+   - Strengthened CI/CD, cut rollbacks by 30%
+
+3. Software Developer - Bajaj Finserv (Aug 2022 – Jul 2024)
+   - Built Spring Boot decision service with Redis, improved decision times by 35%
+   - Event-driven workflows, cut manual reviews by 22%
+   - Integrated eKYC/PAN verification, reduced resubmissions by 28%
+   - Query optimization, reduced DB incidents from 7 to 2 per quarter
+
+4. Software Developer Intern - Wells Fargo (Apr 2021 – Sep 2021)
+   - Built alert-preferences API in Spring Boot, <2s response time
+   - Kafka dead-letter recovery, improved reprocessing by 25%
+   - Added JUnit, Testcontainers, structured logging
+
+Skills:
+- Languages: Java, Python, C, C++, JavaScript, Go, Rust, R, PHP, Shell
+- Web: React, Node.js, Spring Boot, FastAPI, Flask, Django, TypeScript
+- Databases: PostgreSQL, MySQL, MongoDB, Redis, Cassandra, DynamoDB, Neo4j
+- Cloud: AWS (EC2, S3, Lambda, Aurora, Redshift), Azure
+- Tools: Kafka, Docker, Kubernetes, Jenkins, Terraform, Prometheus, Grafana
+- Core: Microservices, Distributed Systems, CI/CD, System Design, AI/ML, NLP
+
+Projects:
+1. No-Code NLP Platform: FastAPI, PyTorch, HuggingFace, React - ML trainer with live metrics
+2. Prompt Refinement AI Chat: React, Node.js, MongoDB, OpenAI - Structured prompt designer
+3. PINTOS OS Development: C, x86 - Priority donation, MLFQ, 30% throughput improvement
+4. Sentiment Analysis with Tone Detection: Python, NLP, TF-IDF - 84.6% accuracy, sarcasm detection
+5. Real-Time AI Virtual Mouse: Python, OpenCV, MediaPipe - Gesture-based control
+6. Persona AI: OpenAI, ChromaDB, Streamlit - RAG chatbot with memory
+7. Next-Word Prediction: LSTM-GRU, Streamlit - Sequence modeling
+8. Time-Series Forecasting: PyTorch, RNN/LSTM - Air quality prediction
+
+Certifications:
+- AWS Certified Machine Learning Engineer (May 2025)
+- AWS Certified Solutions Architect (Mar 2024)
+- AWS Certified Developer (Feb 2024)
+- BCG GenAI (Jan 2025)
+- Tata Data Visualization (Jan 2025)
+- Microsoft GenAI Essentials (Sep 2024)
+
+Research & Writing:
+- Publication: "IoT-Based Estimation of Daily Evapotranspiration" (DoSCI-2024) - LSTM/ML models for irrigation optimization
+- Medium: "When AI Forgets: Context Overload" - LLM context windows, token limits, RAG
+- Medium: "Deep Learning Model Evaluations" - Metrics, validation techniques
+
+Education:
+- MS Computer Science, University at Buffalo (4.0 GPA, 2024-2025)
+- BTech Computer Science, SASTRA University
+
+[END KNOWLEDGE BASE]`;
+
+      const response = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyB_5ipovr3rV0w0xG7tZqo8Hu6_53_dQV0`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            contents: [
+              {
+                parts: [
+                  { text: KNOWLEDGE_BASE },
+                  { text: `\n\nUser Question: ${question}\n\nAnswer:` }
+                ]
+              }
+            ],
+            generationConfig: {
+              temperature: 0.7,
+              maxOutputTokens: 500,
+            }
+          })
+        }
+      );
+
+      const data = await response.json();
+      const answer = data.candidates?.[0]?.content?.parts?.[0]?.text || "Sorry, I couldn't generate a response. Please try again!";
+      
+      setChatResponse({ question, answer });
+    } catch (error) {
+      setChatResponse({ 
+        question, 
+        answer: "Oops! I'm having trouble connecting right now. Please try again in a moment!" 
+      });
+    }
   };
 
   return (
@@ -515,7 +606,7 @@ export default function Portfolio() {
               <span className="text-3xl">🤖</span>
               <div>
                 <h3 className="text-lg font-bold">Ask Me Anything!</h3>
-                <p className="text-sm text-white/60">I know everything about Harsha</p>
+                <p className="text-sm text-white/60">Powered by Gemini AI • I know everything about Harsha</p>
               </div>
             </div>
             <form onSubmit={handleChatSubmit} className="space-y-3">
