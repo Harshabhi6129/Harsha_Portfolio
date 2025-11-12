@@ -386,34 +386,21 @@ Education:
 
 [END KNOWLEDGE BASE]`;
 
-      const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=AIzaSyB_5ipovr3rV0w0xG7tZqo8Hu6_53_dQV0`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            contents: [
-              {
-                parts: [
-                  { text: `${KNOWLEDGE_BASE}\n\nUser Question: ${question}\n\nProvide a helpful, concise answer based on the knowledge base above.` }
-                ]
-              }
-            ],
-            generationConfig: {
-              temperature: 0.7,
-              maxOutputTokens: 500,
-            }
-          })
-        }
-      );
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        console.error('API Error:', errorData);
-        throw new Error(errorData.error?.message || 'API request failed');
-      }
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          question,
+          knowledgeBase: KNOWLEDGE_BASE
+        })
+      });
 
       const data = await response.json();
+      
+      if (!response.ok || data.error) {
+        console.error('API Error:', data);
+        throw new Error(data.error?.message || 'API request failed');
+      }
       console.log('Full Gemini Response:', JSON.stringify(data, null, 2));
       
       if (data.error) {
