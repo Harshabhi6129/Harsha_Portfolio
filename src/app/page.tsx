@@ -581,8 +581,10 @@ Education:
                         <motion.div
                           animate={{ scaleX: [1, 1.2, 1] }}
                           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                          className="absolute bottom-4 left-1/2 h-2 w-8 -translate-x-1/2 rounded-full border-2 border-b-white border-l-transparent border-r-transparent border-t-transparent"
-                        />
+                          className="absolute bottom-3 left-1/2 h-3 w-7 -translate-x-1/2 overflow-hidden"
+                        >
+                          <div className="h-6 w-7 rounded-full border-2 border-white" />
+                        </motion.div>
                       </div>
                     </div>
                   </motion.div>
@@ -677,7 +679,9 @@ Education:
                       <div className="h-1.5 w-1.5 rounded-full bg-white" />
                       <div className="h-1.5 w-1.5 rounded-full bg-white" />
                     </div>
-                    <div className="absolute bottom-1 left-1/2 h-1 w-4 -translate-x-1/2 rounded-full border border-b-white border-l-transparent border-r-transparent border-t-transparent" />
+                    <div className="absolute bottom-0.5 left-1/2 h-2 w-4 -translate-x-1/2 overflow-hidden">
+                      <div className="h-4 w-4 rounded-full border border-white" />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -746,7 +750,9 @@ Education:
                       <div className="h-1.5 w-1.5 rounded-full bg-white" />
                       <div className="h-1.5 w-1.5 rounded-full bg-white" />
                     </div>
-                    <div className="absolute bottom-1 left-1/2 h-1 w-4 -translate-x-1/2 rounded-full border border-b-white border-l-transparent border-r-transparent border-t-transparent" />
+                    <div className="absolute bottom-0.5 left-1/2 h-2 w-4 -translate-x-1/2 overflow-hidden">
+                      <div className="h-4 w-4 rounded-full border border-white" />
+                    </div>
                   </div>
                 </div>
               </div>
