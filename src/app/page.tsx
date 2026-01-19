@@ -61,6 +61,19 @@ const DATA = {
   ],
   projects: [
     {
+      title: "Job Genie",
+      blurb: "AI-powered talent acquisition platform that transforms recruitment by parsing job descriptions and ranking candidates with NLP and ML, reducing sourcing time by 80%.",
+      tools: ["React.js", "FastAPI", "TensorFlow", "OpenAI", "PostgreSQL", "Docker"],
+      code: "https://github.com/Harshabhi6129/Job-Genie",
+    },
+    {
+      title: "MediLink",
+      blurb: "A production-grade frontend prototype for a collaborative clinical network, enabling doctors to share cases, access AI insights, and democratize medical knowledge.",
+      tools: ["React", "TypeScript", "Tailwind CSS", "UI/UX", "System Design"],
+      code: "https://github.com/Harshabhi6129/MediLink",
+      demo: "https://medilink-rust.vercel.app/",
+    },
+    {
       title: "No-Code NLP Model Training Platform",
       blurb: "Built a no-code ML/NLP trainer enabling dataset upload, task setup, guided model selection, dynamic hyperparameters, live metrics dashboards, and exportable artifacts—reducing setup time from hours to minutes.",
       tools: ["FastAPI", "PyTorch", "HuggingFace", "React", "WebSockets"],
@@ -222,7 +235,7 @@ const DATA = {
 };
 
 // ---------- HELPERS ----------
-const Section: React.FC<{ id: string; title: string; icon?: React.ReactNode; children: React.ReactNode }>= ({ id, title, icon, children }) => (
+const Section: React.FC<{ id: string; title: string; icon?: React.ReactNode; children: React.ReactNode }> = ({ id, title, icon, children }) => (
   <section id={id} className="relative scroll-mt-24 py-20">
     <div className="mx-auto max-w-6xl px-6">
       <motion.h2
@@ -242,7 +255,7 @@ const Section: React.FC<{ id: string; title: string; icon?: React.ReactNode; chi
   </section>
 );
 
-const GlassCard: React.FC<{ children: React.ReactNode; className?: string }>= ({ children, className = "" }) => (
+const GlassCard: React.FC<{ children: React.ReactNode; className?: string }> = ({ children, className = "" }) => (
   <motion.div
     initial={{ opacity: 0, y: 24 }}
     whileInView={{ opacity: 1, y: 0 }}
@@ -256,7 +269,7 @@ const GlassCard: React.FC<{ children: React.ReactNode; className?: string }>= ({
   </motion.div>
 );
 
-const Badge: React.FC<{ children: React.ReactNode }>= ({ children }) => (
+const Badge: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <span className="inline-flex items-center rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-white/80 ring-1 ring-white/20">
     {children}
   </span>
@@ -307,11 +320,13 @@ Experience:
 Skills: Java, Python, React, Node.js, Spring Boot, FastAPI, AWS, Kafka, Docker, K8s, PostgreSQL, MongoDB, Redis, Microservices, AI/ML
 
 Top Projects:
-1. No-Code NLP Platform (FastAPI, PyTorch, HuggingFace)
-2. Sentiment Analysis 84.6% accuracy (Python, NLP, TF-IDF) - github.com/Harshabhi6129/Sentiment-Analysis-with-Tone-Detection
-3. PINTOS OS (C, x86, 30% improvement)
-4. AI Virtual Mouse (OpenCV, MediaPipe) - github.com/Harshabhi6129/Real-Time-AI-Virtual-Mouse-System-Using-Deep-Learning
-5. Persona AI RAG chatbot (OpenAI, ChromaDB) - github.com/Harshabhi6129/Persona_AI
+1. Job Genie (React, FastAPI, TensorFlow) - AI Recruitment Platform - github.com/Harshabhi6129/Job-Genie
+2. MediLink (React, TypeScript, Medical AI) - Clinical Collaboration Network - github.com/Harshabhi6129/MediLink
+3. No-Code NLP Platform (FastAPI, PyTorch, HuggingFace)
+4. Sentiment Analysis 84.6% accuracy (Python, NLP, TF-IDF) - github.com/Harshabhi6129/Sentiment-Analysis-with-Tone-Detection
+5. PINTOS OS (C, x86, 30% improvement)
+6. AI Virtual Mouse (OpenCV, MediaPipe) - github.com/Harshabhi6129/Real-Time-AI-Virtual-Mouse-System-Using-Deep-Learning
+7. Persona AI RAG chatbot (OpenAI, ChromaDB) - github.com/Harshabhi6129/Persona_AI
 
 Certs: AWS ML Engineer, Solutions Architect, Developer; BCG GenAI
 Research: IoT Evapotranspiration (DoSCI-2024)`;
@@ -326,43 +341,43 @@ Research: IoT Evapotranspiration (DoSCI-2024)`;
       });
 
       const data = await response.json();
-      
+
       if (!response.ok || data.error) {
         console.error('API Error:', data);
         throw new Error(data.error?.message || 'API request failed');
       }
       console.log('Full Gemini Response:', JSON.stringify(data, null, 2));
-      
+
       if (data.error) {
         console.error('Gemini Error:', data.error);
         throw new Error(data.error.message);
       }
-      
+
       // Try multiple paths to get the answer
-      let answer = data.candidates?.[0]?.content?.parts?.[0]?.text 
-                || data.candidates?.[0]?.output 
-                || data.text 
-                || data.response;
-      
+      let answer = data.candidates?.[0]?.content?.parts?.[0]?.text
+        || data.candidates?.[0]?.output
+        || data.text
+        || data.response;
+
       console.log('Extracted answer:', answer);
-      
+
       if (!answer) {
         console.error('No answer found. Full response:', data);
         console.error('Candidates:', data.candidates);
         throw new Error('No answer generated. Check console for details.');
       }
-      
+
       // Format markdown to HTML for better readability
       answer = answer
         .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>') // Bold
         .replace(/\* /g, '\n• ') // Bullet points
         .replace(/\n/g, '<br/>'); // Line breaks
-      
+
       setChatResponse({ question, answer });
     } catch (error) {
       console.error('Chat Error:', error);
       let errorMessage = 'Something went wrong. Please try again!';
-      
+
       if (error instanceof Error) {
         if (error.message.includes('429') || error.message.includes('quota')) {
           errorMessage = 'Rate limit reached! Please wait a moment and try again.';
@@ -372,10 +387,10 @@ Research: IoT Evapotranspiration (DoSCI-2024)`;
           errorMessage = error.message;
         }
       }
-      
-      setChatResponse({ 
-        question, 
-        answer: `⚠️ ${errorMessage}` 
+
+      setChatResponse({
+        question,
+        answer: `⚠️ ${errorMessage}`
       });
     }
   };
@@ -525,12 +540,12 @@ Research: IoT Evapotranspiration (DoSCI-2024)`;
                   {/* Speech Bubble */}
                   <motion.div
                     initial={{ opacity: 0, scale: 0.8, y: 10 }}
-                    animate={{ 
+                    animate={{
                       opacity: [0.9, 1, 0.9],
                       scale: [1, 1.05, 1],
                       y: [0, -5, 0]
                     }}
-                    transition={{ 
+                    transition={{
                       delay: 1.5,
                       duration: 3,
                       repeat: Infinity,
@@ -548,7 +563,7 @@ Research: IoT Evapotranspiration (DoSCI-2024)`;
       </header>
 
       {/* ABOUT */}
-      <Section id="about" title="About" icon={<PenTool className="h-5 w-5" />}> 
+      <Section id="about" title="About" icon={<PenTool className="h-5 w-5" />}>
         <GlassCard>
           <p className="text-white/80">
             I&apos;m a software engineer who loves turning ideas into shippable, reliable systems. From backend services and event-driven
@@ -559,7 +574,7 @@ Research: IoT Evapotranspiration (DoSCI-2024)`;
       </Section>
 
       {/* SKILLS */}
-      <Section id="skills" title="Technical Skills" icon={<Code2 className="h-5 w-5" />}> 
+      <Section id="skills" title="Technical Skills" icon={<Code2 className="h-5 w-5" />}>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {DATA.skillCategories.map((cat) => (
             <GlassCard key={cat.category}>
@@ -583,7 +598,7 @@ Research: IoT Evapotranspiration (DoSCI-2024)`;
       </Section>
 
       {/* EXPERIENCE */}
-      <Section id="experience" title="Experience" icon={<Server className="h-5 w-5" />}> 
+      <Section id="experience" title="Experience" icon={<Server className="h-5 w-5" />}>
         <div className="grid gap-6 md:grid-cols-2">
           {DATA.experience.map((job) => (
             <ExperienceCard key={job.org} job={job} onKnowMore={() => setSelectedJob(job)} />
@@ -755,7 +770,7 @@ Research: IoT Evapotranspiration (DoSCI-2024)`;
       )}
 
       {/* EDUCATION */}
-      <Section id="education" title="Education" icon={<GraduationCap className="h-5 w-5" />}> 
+      <Section id="education" title="Education" icon={<GraduationCap className="h-5 w-5" />}>
         <div className="grid gap-6">
           {DATA.education.map((edu) => (
             <GlassCard key={edu.school}>
@@ -782,7 +797,7 @@ Research: IoT Evapotranspiration (DoSCI-2024)`;
       </Section>
 
       {/* PROJECTS */}
-      <Section id="projects" title="Projects" icon={<Brain className="h-5 w-5" />}> 
+      <Section id="projects" title="Projects" icon={<Brain className="h-5 w-5" />}>
         <div className="grid gap-6 md:grid-cols-2">
           {DATA.projects.map((pr) => (
             <GlassCard key={pr.title}>
@@ -811,7 +826,7 @@ Research: IoT Evapotranspiration (DoSCI-2024)`;
       </Section>
 
       {/* CERTIFICATIONS */}
-      <Section id="certifications" title="Certifications" icon={<Award className="h-5 w-5" />}> 
+      <Section id="certifications" title="Certifications" icon={<Award className="h-5 w-5" />}>
         <div className="grid gap-6 md:grid-cols-2">
           {DATA.certifications.map((cert) => (
             <GlassCard key={cert.title}>
@@ -849,7 +864,7 @@ Research: IoT Evapotranspiration (DoSCI-2024)`;
       </Section>
 
       {/* RESEARCH */}
-      <Section id="research" title="Research & Publication" icon={<BookOpen className="h-5 w-5" />}> 
+      <Section id="research" title="Research & Publication" icon={<BookOpen className="h-5 w-5" />}>
         <GlassCard>
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <div>
@@ -868,7 +883,7 @@ Research: IoT Evapotranspiration (DoSCI-2024)`;
       </Section>
 
       {/* BLOG */}
-      <Section id="blog" title="Writing" icon={<PenTool className="h-5 w-5" />}> 
+      <Section id="blog" title="Writing" icon={<PenTool className="h-5 w-5" />}>
         <GlassCard>
           <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
             <div>
@@ -883,7 +898,7 @@ Research: IoT Evapotranspiration (DoSCI-2024)`;
       </Section>
 
       {/* CONTACT */}
-      <Section id="contact" title="Contact" icon={<Mail className="h-5 w-5" />}> 
+      <Section id="contact" title="Contact" icon={<Mail className="h-5 w-5" />}>
         <GlassCard>
           <div className="grid gap-6 md:grid-cols-2">
             <div>
